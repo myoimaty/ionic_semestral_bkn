@@ -1,0 +1,28 @@
+<ion-card>
+  <img alt="Silhouette of mountains" src="https://aimchile.cl/wp-content/uploads/2022/03/web-b3.png" />
+  <ion-card-header *ngIf="mostrarHeader">
+    <div class="centrar">
+      <ion-card-title>Iniciar Sesión</ion-card-title>
+    </div>
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-item>
+      <ion-input formControlNAme="nombre" type="email" label="Usuario" labelPlacement="floating" placeholder="Ingrese usuario"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input formControlNAme="password" type="password" label="Contraseña" labelPlacement="floating" placeholder="Ingrese contraseña"></ion-input>
+    </ion-item>
+
+  </ion-card-content>
+  <div class="centrar">
+    <ion-button *ngIf="mostrarBoton"  color="secondary" shape="round" (click)="home()">Ingresar</ion-button>
+  </div>
+  <div class="centrar">
+    <ion-button *ngIf="ingresardocente"  color="secondary" shape="round" (click)="homedocente()">Ingresar</ion-button>
+  </div>
+  <div class="centrar">
+    <ion-button *ngIf="mostrarREgistrar" color="secondary" shape="round" (click)="registrar()">Registrar</ion-button>
+  </div>
+  
+</ion-card>

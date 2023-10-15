@@ -1,0 +1,66 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>asistencias</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ clases.nombre }}</ion-card-title>
+      <ion-card-subtitle>profesor: {{ clases.nomProf }}</ion-card-subtitle>
+      
+    </ion-card-header>
+    <ion-card-subtitle class="centrar">clases 8 de 9 (89%) </ion-card-subtitle>
+  
+    <ion-card-content>
+      <ion-accordion-group>
+        <ion-accordion value="first">
+          <ion-item slot="header" color="light">
+            <ion-label>Fechas</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">
+            <ion-label color="success">01-09-23</ion-label>
+          </div>
+          <div class="ion-padding" slot="content">
+            <ion-label color="success">02-09-23</ion-label>
+          </div>
+          <div class="ion-padding" slot="content">
+            <ion-label color="danger">03-09-23</ion-label>
+          </div>
+          <div class="ion-padding" slot="content">
+            <ion-label color="success">04-09-23</ion-label>
+          </div>
+          <div class="ion-padding" slot="content">
+            <ion-label color="success">05-09-23</ion-label>
+          </div>
+          <div class="ion-padding" slot="content">
+            <ion-label color="success">06-09-23</ion-label>
+          </div>
+          <div class="ion-padding" slot="content">
+            <ion-label color="success">07-09-23</ion-label>
+          </div>
+          <div class="ion-padding" slot="content">
+            <ion-label color="success">08-09-23</ion-label>
+          </div>
+          <div class="ion-padding" slot="content">
+            <ion-label color="success">09-09-23</ion-label>
+          </div>
+
+        </ion-accordion>
+      </ion-accordion-group>
+    </ion-card-content>
+
+
+  </ion-card>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="qr-code-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

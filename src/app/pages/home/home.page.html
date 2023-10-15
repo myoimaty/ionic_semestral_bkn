@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-list-header color="secondary">
+      <ion-label>Clases</ion-label>
+    </ion-list-header>
+  
+    <ion-item *ngFor="let aux of listarCLases" [routerLink]="['/home/', aux.id]">
+      <ion-grid>
+        <ion-row class="ion-align-items-center">
+          <ion-button fill="outline" color="secondary">
+            <ion-label class="text-limit">{{ aux.nombre }}</ion-label>
+          </ion-button>
+          <ion-text class="text-limit">{{ aux.nomProf }}</ion-text>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+
+
+
+  <!--<ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="qr-code-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>-->
+
+</ion-content>

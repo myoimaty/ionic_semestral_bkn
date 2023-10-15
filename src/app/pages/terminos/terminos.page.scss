@@ -1,0 +1,18 @@
+.texto-largo {
+    max-width: 100%;
+    overflow: auto; /* Agrega barras de desplazamiento si el contenido es demasiado largo */
+  }
+
+  .centrado2{
+    margin-left: 60px;
+    margin-right: 40px;
+    margin-block-end: 20px;
+    width: 160px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+}
+
+.scroll-vertical {
+  max-height: 300px; /* ajusta la altura máxima según tus necesidades */
+  overflow-y: auto;
+}

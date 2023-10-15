@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Recuperar contraseña</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="small">Recuperar contraseña</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Recupera tu contraseña</ion-card-title>
+    </ion-card-header>
+    <div class="centrar">Ingresa tu correo para recuperar tu contraseña</div>
+    <ion-card-content>
+      <ion-item>
+        <ion-input class="centrar" #usuario type="email" label="email" labelPlacement="floating" placeholder="Ej: john.doe@duocuc.cl" required></ion-input>
+      </ion-item>
+      <ion-button (click)="mensaje(usuario)" class="centrar" color="secondary" >Enviar</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
