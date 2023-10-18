@@ -13,6 +13,8 @@ import { LoginService } from 'src/app/services/login.service';
 export class CrearUsuarioPage implements OnInit {
   formularioRegistro: FormGroup;
 
+  
+
   constructor(
     private router: Router,
     private alertController: AlertController,
