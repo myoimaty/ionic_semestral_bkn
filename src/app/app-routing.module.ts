@@ -74,7 +74,12 @@ const routes: Routes = [
   {
     path: 'agregarclas',
     loadChildren: () => import('./pages/homedocente/agregarclas/agregarclas.module').then( m => m.AgregarclasPageModule)
+  },
+  {
+    path: 'apipage',
+    loadChildren: () => import('./pages/apipage/apipage.module').then( m => m.ApipagePageModule)
   }
+
 
 
 

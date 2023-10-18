@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>apipage</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h4>Lista de montros</h4>
+  <ion-list *ngFor="let aux of digimones">  
+    <ion-item>
+      <ion-card>
+        <img src="{{ aux.image }}" alt="">
+        <ion-card-header>
+          <ion-card-title>{{ aux.name }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content></ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+  <div class="cetrado">
+  <ion-button  (click)="cargarPaginaant()"> Anterior</ion-button>
+  <ion-button  (click)="cargarPagina()"> Siguente</ion-button>
+  
+</div>
+</ion-content>
