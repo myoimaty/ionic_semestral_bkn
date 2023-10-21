@@ -78,7 +78,32 @@ const routes: Routes = [
   {
     path: 'apipage',
     loadChildren: () => import('./pages/apipage/apipage.module').then( m => m.ApipagePageModule)
+  },
+  {
+    path: 'apihome',
+    loadChildren: () => import('./pages/api/home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'apiadd',
+    loadChildren: () => import('./pages/api/add/add.module').then( m => m.AddPageModule)
+  },
+  {
+    path: 'apilist',
+    loadChildren: () => import('./pages/api/list/list.module').then( m => m.ListPageModule)
+  },
+  {
+    path: 'apiupdate/:id',
+    loadChildren: () => import('./pages/api/update/update.module').then( m => m.UpdatePageModule)
+  },
+  {
+    path: 'apidelete/:id',
+    loadChildren: () => import('./pages/api/delete/delete.module').then( m => m.DeletePageModule)
+  },
+  {
+    path: 'apidetail/:id',
+    loadChildren: () => import('./pages/api/detail/detail.module').then( m => m.DetailPageModule)
   }
+
 
 
 

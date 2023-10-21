@@ -35,7 +35,7 @@
         <ion-text position="stacked" color="danger" *ngIf="loginForm.get('password')?.hasError('required')">
           la contraseña es requerida
         </ion-text>
-        <ion-text position="stacked" color="danger" *ngIf="loginForm.get('password')?.hasError('minlegth')">
+        <ion-text position="stacked" color="danger" *ngIf="loginForm.get('password')?.hasError('minlength')">
           la contraseña debe tener al menos 6 caracteres
         </ion-text>
         <!--</form>-->
