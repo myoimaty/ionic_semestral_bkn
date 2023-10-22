@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UsuariosrandomService } from 'src/app/services/usuariosrandom.service';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
+import { ToastController } from '@ionic/angular'; // Importa ToastController
 
 @Component({
   selector: 'app-login',
@@ -10,62 +10,43 @@ import { UsuariosrandomService } from 'src/app/services/usuariosrandom.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
-  //declarations
-  formularioLogin: FormGroup;
-
-  //decaration clase
   loginForm: FormGroup;
-  user: any; //toda la info aqui 
-  emailValue?: string //capturar email usuario random
-  passValue?: string //capturar contraseña de usuario random
 
   constructor(
     private router: Router,
-    private alertController: AlertController,
-    public fb: FormBuilder,
-    private usuariosRandom: UsuariosrandomService,
+    private fb: FormBuilder,
+    private loginService: LoginService,
+    private toastController: ToastController // Inyecta ToastController
   ) {
-    //clase
-    this.loginForm =  this.fb.group({
+    this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-    })
-
-    this.formularioLogin = this.fb.group({
-      nombre: ['', Validators.required],
-      password: ['', Validators.required],
     });
   }
 
-  ngOnInit() {
-    this.usuariosRandom.getRandomUser().subscribe(
-      (data) =>{
-        this.user = data.results[0] //rellena el user
-        this.emailValue = this.user.email
-        this.passValue = this.user.login.password
-      },
-
-    )
-  }
+  ngOnInit() {}
 
   async ingresar() {
-    const { nombre, password } = this.formularioLogin.value;
+    const { email, password } = this.loginForm.value;
+    console.log('Usuario que intenta iniciar sesión:', { email, password });
+    const isAuthenticated = await this.loginService.authenticate({ email, password });
 
-    const storedUser = JSON.parse(localStorage.getItem('usuario') || '{}');
-
-    if (storedUser.nombre === nombre && storedUser.password === password) {
-      console.log('Ingresado');
+    if (isAuthenticated) {
+      console.log('Usuario autenticado');
       this.router.navigate(['home']);
     } else {
-      const alert = await this.alertController.create({
-        header: 'Datos Incorrectos',
-        message: 'Los datos que ingresaste son incorrectos',
-        buttons: ['Aceptar'],
-      });
-
-      await alert.present();
+      console.log('Credenciales inválidas');
+      this.mostrarError(); // Llama a la función para mostrar el mensaje de error
     }
+  }
+
+  async mostrarError() {
+    const toast = await this.toastController.create({
+      message: 'Credenciales inválidas. Por favor, verifica tu correo electrónico y contraseña.',
+      duration: 3000, // Duración del mensaje en milisegundos (3 segundos en este caso)
+      position: 'bottom', // Posición del mensaje en la pantalla (puedes cambiarlo según tus preferencias)
+    });
+    await toast.present(); // Muestra el mensaje de error
   }
 
   registrar() {

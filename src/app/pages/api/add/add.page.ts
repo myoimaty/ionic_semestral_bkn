@@ -13,8 +13,8 @@ export class AddPage implements OnInit {
 
   //INSTANCIA CREADA PARA TEST
   clase: Iclase = {
-    nombre: 'Fe cristiana',
-    docente: 'un random',
+    nombre: '',
+    docente: '',
 
   }
 

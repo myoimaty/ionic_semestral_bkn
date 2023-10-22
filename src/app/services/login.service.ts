@@ -1,39 +1,51 @@
 import { Injectable } from '@angular/core';
-import { Login } from '../pages/login/login.model';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Iusuario } from '../interfaces/iusuario';
+
+type Iusuarios = Iusuario[];
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UsuariosService {
+  apiURL = "https://jsonserverbkn.onrender.com";
+
+  constructor(private httpClient: HttpClient) {}
+
+  listUser(): Observable<Iusuarios> {
+    return this.httpClient.get<Iusuarios>(`${this.apiURL}/usuarios`);
+  }
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+  constructor(private usuariosService: UsuariosService) {}
 
-  login: Login[] = [
-    {
-      id:'1',
-      usuario: 'john.doe@duocuc.cl',
-      password: '123',
- 
-    },
-    {
-      id:'2',
-      usuario: 'xd@duocuc.cl',
-      password: '123',
-
-    }
-  ]
-
-  constructor() { }
-
-  //METODOS CUSTOM
-  //METODO QUE AGREGA UN USUARIO
-  addUsuario(usuario: string, password: string) {
-    // Generar un nuevo ID único
-    const newId = (this.login.length + 1).toString();
-    
-    // Agregar el nuevo usuario con el ID generado
-    this.login.push({
-      id: newId,
-      usuario,
-      password,
+  authenticate(user: Iusuario): Promise<boolean> {
+    console.log('Usuario que intenta iniciar sesión:', user);
+    return new Promise((resolve, reject) => {
+      this.usuariosService.listUser().subscribe((users: Iusuarios) => {
+        console.log('Usuarios en la base de datos:', users); // Verifica si los usuarios se cargan correctamente
+  
+        let foundUser: Iusuario | undefined;
+        for (const currentUser of users) {
+          console.log('Comparando con usuario actual:', currentUser); // Verifica cada usuario en el bucle
+  
+          if (currentUser.email === user.email && currentUser.password === user.password) {
+            foundUser = currentUser;
+            break;
+          }
+        }
+  
+        console.log('Usuario encontrado:', foundUser); // Verifica si se encontró un usuario correspondiente
+  
+        resolve(!!foundUser);
+      }, error => {
+        reject(error);
+      });
     });
   }
 }

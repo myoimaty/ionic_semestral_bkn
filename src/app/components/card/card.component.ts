@@ -30,6 +30,6 @@ export class CardComponent  implements OnInit {
     this.router.navigate(['/crear-usuario']);
   }
   homedocente() {
-    this.router.navigate(['/homedocente']);
+    this.router.navigate(['/apilist']);
   }
 }

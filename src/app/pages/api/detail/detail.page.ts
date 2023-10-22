@@ -11,9 +11,9 @@ export class DetailPage implements OnInit {
 
   //INSTANCIA que recibe la info
   clase = {
-    id: 0,
-    nombre: 'TEST',
-    docente: 'TEST',
+    id: '',
+    nombre: '',
+    docente: '',
 
   }
 

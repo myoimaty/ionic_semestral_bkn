@@ -8,7 +8,7 @@
 
 <ion-content [fullscreen]="true">
 
-  <ion-card>
+  <ion-card >
     <img alt="Silhouette of mountains" src="https://aimchile.cl/wp-content/uploads/2022/03/web-b3.png" />
     <ion-card-header>
       <div class="centrar">
@@ -16,47 +16,37 @@
       </div>
     </ion-card-header>
   
-    <ion-card-content [formGroup]="loginForm">
-      <!--<form [formGroup]="formularioLogin" (ngSubmit)="ingresar()">-->
-        <ion-item>
-          <ion-label position="floating">Nombre</ion-label>
-          <ion-input [(ngModel)]="emailValue" formControlName="email"></ion-input>
-        </ion-item>
-        <ion-text position="stacked" color="danger" *ngIf="loginForm.get('email')?.hasError('required')">
-          El correo es requerido
-        </ion-text>
-        <ion-text position="stacked" color="danger" *ngIf="loginForm.get('email')?.hasError('email')">
-          El correo es invalido
-        </ion-text>
-        <ion-item>
-          <ion-label position="floating">Contraseña</ion-label>
-          <ion-input [(ngModel)]="passValue" formControlName="password" type="password"></ion-input>
-        </ion-item>
-        <ion-text position="stacked" color="danger" *ngIf="loginForm.get('password')?.hasError('required')">
-          la contraseña es requerida
-        </ion-text>
-        <ion-text position="stacked" color="danger" *ngIf="loginForm.get('password')?.hasError('minlength')">
-          la contraseña debe tener al menos 6 caracteres
-        </ion-text>
-        <!--</form>-->
+    <ion-card-content >
+      <form [formGroup]="loginForm">
+      <ion-item>
+        <ion-label position="floating">Correo Electrónico</ion-label>
+        <ion-input formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input formControlName="password" type="password"></ion-input>
+      </ion-item>
+    </form>
     </ion-card-content>
+    
     <div class="centrar">
-      <ion-button [disabled]="!loginForm.valid"  color="secondary" shape="round" (click)="ingresar()">Ingresar</ion-button>
+      <ion-button color="secondary" shape="round" (click)="ingresar()">Ingresar</ion-button>
     </div>
     <div class="centrar">
       <ion-button color="secondary" shape="round" (click)="registrar()">Registrar</ion-button>
     </div>
     
   </ion-card>
-
   
-  
-
 </ion-content>
-<ion-footer >
+
+<ion-footer>
   <div class="centrar">
     <ion-button size="small" fill="clear" (click)="restaurar()">Recuperar contraseña</ion-button> 
-    
   </div>
-  
 </ion-footer>
+
+
+
+
+

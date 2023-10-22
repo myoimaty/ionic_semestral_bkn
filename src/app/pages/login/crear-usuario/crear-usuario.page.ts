@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertController, ToastController } from '@ionic/angular';
-import { AuthService } from 'src/app/services/auth.service';
-import { LoginService } from 'src/app/services/login.service';
+import { Iusuario } from 'src/app/interfaces/iusuario';
+import { UsuariosService } from 'src/app/services/api/usuarios.service';
+import { UsuariosrandomService } from 'src/app/services/usuariosrandom.service';
 
 @Component({
   selector: 'app-crear-usuario',
@@ -11,45 +11,55 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./crear-usuario.page.scss'],
 })
 export class CrearUsuarioPage implements OnInit {
-  formularioRegistro: FormGroup;
+  usuario: Iusuario = {
+    email: '',
+    password: '',
+  };
 
-  
+  loginForm: FormGroup;
+  emailValue?: string;
+  passValue?: string;
 
   constructor(
     private router: Router,
-    private alertController: AlertController,
     public fb: FormBuilder,
-    private authService: AuthService // Inyecta AuthService aquí
+    private usuariosRandom: UsuariosrandomService,
+    private apiServices: UsuariosService
   ) {
-    this.formularioRegistro = this.fb.group({
-      nombre: ['', Validators.required],
-      password: ['', Validators.required],
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
   ngOnInit() {}
 
+  agregarUsuariosAleatorios() {
+    this.usuariosRandom.getRandomUsers().subscribe(
+      (data) => {
+        const users = data; // Obtén los usuarios aleatorios
+        for (const userObj of users) {
+          const user = userObj.results[0]; // Accede al primer usuario del array 'results'
+          const nuevoUsuario: Iusuario = {
+            email: user.email,
+            password: user.login.password,
+          };
+          this.apiServices.addUser(nuevoUsuario).subscribe();
+        }
+      },
+      (error) => {
+        console.error('Error al obtener usuarios aleatorios:', error);
+      }
+    );
+  }
+
   home() {
     this.router.navigate(['home']);
   }
 
-
-  async guardar() {
-    const { nombre, password} = this.formularioRegistro.value;
-  
-    if (this.formularioRegistro.invalid) {
-      const alert = await this.alertController.create({
-        header: 'Datos incompletos',
-        message: 'Tienes que llenar todos los datos',
-        buttons: ['Aceptar'],
-      });
-  
-      await alert.present();
-      return;
-    }
-  
-    // Guarda el usuario en localStorage
-    localStorage.setItem('usuario', JSON.stringify({ nombre, password}));
-    this.router.navigate(['home']);
+  addUser() {
+    this.apiServices.addUser(this.usuario).subscribe(() => {
+      this.router.navigate(['/home']);
+    });
   }
 }

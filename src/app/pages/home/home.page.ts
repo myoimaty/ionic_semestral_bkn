@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { Clases } from './home.model';
-import { ClasesService } from 'src/app/services/clases.service';
+import { ClasesService } from 'src/app/services/api/clases.service';
 
 @Component({
   selector: 'app-home',
@@ -11,13 +11,28 @@ import { ClasesService } from 'src/app/services/clases.service';
 })
 export class HomePage implements OnInit {
 
-  listarCLases: Clases[] = [];
-  
+  listarCLases: any = [];
 
-  constructor(private ClasesService: ClasesService, private toastController: ToastController, private router: Router) { }
+  constructor(private router: Router,
+    private clasesApi: ClasesService) { }
 
   ngOnInit() {
-    this.listarCLases = this.ClasesService.getAll()
+    this.clasesApi.listClases().subscribe((resp) => {
+      //console.log(resp)
+      this.listarCLases = resp
+    })
+  }
+
+  ionViewWillEnter(){
+     this.listar();
+  }
+
+  listar(){
+    this.clasesApi.listClases().subscribe((resp) => {
+      //console.log(resp)
+      this.listarCLases = resp
+    })
+    //this.listarCLases = this.ClasesService.getAll()
   }
 
   asistencia() {

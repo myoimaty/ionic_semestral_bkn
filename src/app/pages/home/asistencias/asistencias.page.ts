@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ClasesService } from 'src/app/services/clases.service';
-import { ActivatedRoute } from '@angular/router';
+import { ClasesService } from 'src/app/services/api/clases.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Clases } from '../home.model';
 
 @Component({
@@ -10,17 +10,37 @@ import { Clases } from '../home.model';
 })
 export class AsistenciasPage implements OnInit {
 
-  clases! : Clases;
+  clase = {
+    id: '',
+    nombre: '',
+    docente: '',
 
-  constructor(private ClasesService: ClasesService, private activatedRoute: ActivatedRoute) { }
+  }
+
+  constructor(private apiService: ClasesService,
+    private router: Router) { }
 
   ngOnInit() {
-    this.activatedRoute.paramMap.subscribe(param => {
-      const aux = param.get('id')
-      if (aux) {
-        this.clases = this.ClasesService.getClase(aux) 
+  }
+
+  ionViewWillEnter(){
+    this.getClase(this.getId())
+  }
+
+  getId(){
+    let url = this.router.url
+    let aux = url.split("/",3)
+    let id = parseInt(aux[2])
+    return id 
+  }
+
+  getClase(id: Number){
+    this.apiService.getClase(id).subscribe((resp:any) => {
+      this.clase = {
+        id: resp[0].id,
+        nombre: resp[0].nombre,
+        docente: resp[0].docente
       }
     })
   }
-
 }

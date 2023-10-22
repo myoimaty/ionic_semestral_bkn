@@ -7,7 +7,27 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
-  <app-card [ingresardocente]="true" [mostrarBoton]="false" [mostrarREgistrar]="false"></app-card>
+<ion-content>
+  <ion-card>
+    <img alt="Silhouette of mountains" src="https://aimchile.cl/wp-content/uploads/2022/03/web-b3.png" />
+    <ion-card-header>
+      <div class="centrar">
+        <ion-card-title>Iniciar Sesión</ion-card-title>
+      </div>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-item>
+        <ion-input type="email" [(ngModel)]="email" label="Usuario" labelPlacement="floating" placeholder="Ingrese usuario"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="password" [(ngModel)]="password" label="Contraseña" labelPlacement="floating" placeholder="Ingrese contraseña"></ion-input>
+      </ion-item>
+    </ion-card-content>
+    
+    <div class="centrar">
+      <ion-button color="secondary" shape="round" (click)="ingresar()">Ingresar</ion-button>
+    </div>
+  </ion-card>
 </ion-content>
 
