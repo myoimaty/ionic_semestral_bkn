@@ -3,6 +3,7 @@ import { ClasesService } from 'src/app/services/api/clases.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Clases } from '../home.model';
 
+
 @Component({
   selector: 'app-asistencias',
   templateUrl: './asistencias.page.html',

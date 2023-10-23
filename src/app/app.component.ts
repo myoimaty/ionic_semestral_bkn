@@ -11,19 +11,19 @@ export class AppComponent {
     { title: 'Inicio', url: 'home', icon: 'home' },
     { title: 'Perfil', icon: 'person-circle' },
     { title: 'APIDigimon', url: 'apipage', icon: 'grid' },
-    { title: 'API', url: 'apihome', icon: 'home' },
+    { title: 'Feriados', url: 'feriados', icon: 'calendar-number' },
     { title: 'Cerrar Sesión', url: 'login', icon: 'log-out' },
   ];
 
-  public appApi = [
-    { title: 'home', url: 'apihome', icon: 'home' },
-    { title: 'add', url:'apiadd', icon: 'person-circle' },
-    { title: 'list', url: 'apilist', icon: 'grid' },
-    { title: 'update', url: 'apiupdate', icon: 'home' },
-    { title: 'delete', url: 'apidelete', icon: 'home' },
-    { title: 'update', url: 'apidetail', icon: 'home' },
-    { title: 'Cerrar Sesión', url: 'login', icon: 'log-out' },
-  ];
+  //public appApi = [
+    //{ title: 'home', url: 'apihome', icon: 'home' },
+    //{ title: 'add', url:'apiadd', icon: 'person-circle' },
+    //{ title: 'list', url: 'apilist', icon: 'grid' },
+    //{ title: 'update', url: 'apiupdate', icon: 'home' },
+    //{ title: 'delete', url: 'apidelete', icon: 'home' },
+    //{ title: 'update', url: 'apidetail', icon: 'home' },
+    //{ title: 'Cerrar Sesión', url: 'login', icon: 'log-out' },
+  //];
   constructor(
     private router: Router,
     private menuCotroller: MenuController

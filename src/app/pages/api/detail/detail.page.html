@@ -12,54 +12,29 @@
 
 <ion-content [fullscreen]="true">
   <ion-card>
+    
     <ion-buttons (click)="deleteClase()"  shape="round" > 
       <ion-icon slot="end" fill="outline" name="trash-outline"></ion-icon> 
     </ion-buttons> 
     <ion-card-header>
-      <ion-row >
-        <ion-text >Docente: {{ clase.docente }} </ion-text>
+      <img class="centrar" [src]="qrCodeImageUrl" alt="QR Code">
+      <ion-row >  
+        <h3>{{ clase.nombre }}</h3>
       </ion-row>
-      <ion-label >{{ clase.nombre }}</ion-label>
+      <ion-text >Docente: {{ clase.docente }} </ion-text>
+      
       
     </ion-card-header>
   
     <ion-card-content >
-      <ion-button  class="centrar" shape="round">
-        <ion-icon slot="start" name="qr-code"></ion-icon> Generar QR
-      </ion-button>
-      <ion-accordion-group>
-        <ion-accordion value="first">
+      <ion-accordion-group *ngFor="let scannedClass of scannedClasses">
+        <ion-accordion [value]="scannedClass">
           <ion-item slot="header" color="light">
             <ion-label>Registro de clases</ion-label>
           </ion-item>
           <div class="ion-padding" slot="content">
-            <ion-label color="primary">01-09-23</ion-label>
+            <ion-label color="primary">{{ scannedClass }}</ion-label>
           </div>
-          <div class="ion-padding" slot="content">
-            <ion-label color="primary">02-09-23</ion-label>
-          </div>
-          <div class="ion-padding" slot="content">
-            <ion-label color="primary">03-09-23</ion-label>
-          </div>
-          <div class="ion-padding" slot="content">
-            <ion-label color="primary">04-09-23</ion-label>
-          </div>
-          <div class="ion-padding" slot="content">
-            <ion-label color="primary">05-09-23</ion-label>
-          </div>
-          <div class="ion-padding" slot="content">
-            <ion-label color="primary">06-09-23</ion-label>
-          </div>
-          <div class="ion-padding" slot="content">
-            <ion-label color="primary">07-09-23</ion-label>
-          </div>
-          <div class="ion-padding" slot="content">
-            <ion-label color="primary">08-09-23</ion-label>
-          </div>
-          <div class="ion-padding" slot="content">
-            <ion-label color="primary">09-09-23</ion-label>
-          </div>
-
         </ion-accordion>
       </ion-accordion-group>
     </ion-card-content>

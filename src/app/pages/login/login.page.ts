@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 import { ToastController } from '@ionic/angular'; // Importa ToastController
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -34,6 +35,7 @@ export class LoginPage implements OnInit {
     if (isAuthenticated) {
       console.log('Usuario autenticado');
       this.router.navigate(['home']);
+      this.pasaste();
     } else {
       console.log('Credenciales inválidas');
       this.mostrarError(); // Llama a la función para mostrar el mensaje de error
@@ -41,12 +43,31 @@ export class LoginPage implements OnInit {
   }
 
   async mostrarError() {
-    const toast = await this.toastController.create({
-      message: 'Credenciales inválidas. Por favor, verifica tu correo electrónico y contraseña.',
-      duration: 3000, // Duración del mensaje en milisegundos (3 segundos en este caso)
-      position: 'bottom', // Posición del mensaje en la pantalla (puedes cambiarlo según tus preferencias)
+    await Swal.fire({
+      icon: 'error', // Tipo de ícono (puedes cambiarlo según tus necesidades)
+      title: 'Credenciales inválidas',
+      text: 'Por favor, verifica tu correo electrónico y contraseña.',
+      confirmButtonText: 'Entendido', // Texto del botón de confirmación
+      heightAuto: false
     });
-    await toast.present(); // Muestra el mensaje de error
+  }
+  async pasaste() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    
+    Toast.fire({
+      icon: 'success',
+      title: 'Logeado'
+    })
   }
 
   registrar() {

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Iusuario } from 'src/app/interfaces/iusuario';
 import { UsuariosService } from 'src/app/services/api/usuarios.service';
 import { UsuariosrandomService } from 'src/app/services/usuariosrandom.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-crear-usuario',
@@ -26,6 +27,7 @@ export class CrearUsuarioPage implements OnInit {
     private usuariosRandom: UsuariosrandomService,
     private apiServices: UsuariosService
   ) {
+    
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -59,7 +61,17 @@ export class CrearUsuarioPage implements OnInit {
 
   addUser() {
     this.apiServices.addUser(this.usuario).subscribe(() => {
+      this.exito()
       this.router.navigate(['/home']);
+    });
+  }
+
+  async exito() {
+    await Swal.fire({
+      icon: 'success', // Tipo de ícono (puedes cambiarlo según tus necesidades)
+      title: 'Cuenta creada',
+      confirmButtonText: 'Entendido', // Texto del botón de confirmación
+      heightAuto: false
     });
   }
 }

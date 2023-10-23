@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Feriados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngFor="let feriado of listarferiados">
+      <ion-label>
+        {{ feriado.title }}
+      </ion-label>
+      <ion-label>
+        {{ feriado.date }}
+      </ion-label>
+      <ion-label>
+        {{ feriado.type }}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-button (click)="listarf()" expand="full">Actualizar Feriados</ion-button>
+</ion-content>
