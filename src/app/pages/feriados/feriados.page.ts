@@ -12,15 +12,14 @@ import { FeriadosService } from 'src/app/services/feriados.service';
 })
 export class FeriadosPage implements OnInit {
 
-  listarferiados: any = [];
+  listarferiados: Iferiados[] = [];
 
   constructor(private router: Router,private feriadosapi: FeriadosService) { }
 
   ngOnInit() {
-
-    this.feriadosapi.listderiado().subscribe((resp) =>{
-      this.listarferiados = resp
-    })
+    this.feriadosapi.listderiado().subscribe((data) => {
+      this.listarferiados = data;
+    });
   }
 
   listarf(){

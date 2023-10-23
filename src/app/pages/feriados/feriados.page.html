@@ -1,22 +1,29 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Feriados</ion-title>
+    <ion-title class="centrar">RegistrAPP</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-list>
-    <ion-item *ngFor="let feriado of listarferiados">
-      <ion-label>
-        {{ feriado.title }}
-      </ion-label>
-      <ion-label>
-        {{ feriado.date }}
-      </ion-label>
-      <ion-label>
-        {{ feriado.type }}
-      </ion-label>
-    </ion-item>
-  </ion-list>
-  <ion-button (click)="listarf()" expand="full">Actualizar Feriados</ion-button>
+<ion-content class="centro">
+  <ion-card class="ajustar-contenido">
+    <ion-card-header>
+      <ion-card-title >Feriados</ion-card-title>
+      <ion-card-subtitle>Estos dias descansas crack</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let feriado of listarferiados">
+          <ion-label>
+            <ion-text color="secondary">
+            <h2>{{ feriado.title }}</h2>
+          </ion-text>
+            <p>{{ feriado.date | date:'yyyy-MM-dd' }} &nbsp;&nbsp;&nbsp;&nbsp; {{ feriado.type }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

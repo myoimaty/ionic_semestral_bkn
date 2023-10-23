@@ -1,0 +1,15 @@
+.centro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .ajustar-contenido {
+    margin: 0 auto;
+    max-width: 90%;
+  }
+  .ion-title.title-large {
+    color: #c897d8;
+    font-size: 30px;
+  }
