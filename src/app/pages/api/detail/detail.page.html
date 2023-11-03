@@ -11,7 +11,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card>
+  <ion-card *ngIf="clase">
     
     <ion-buttons (click)="deleteClase()"  shape="round" > 
       <ion-icon slot="end" fill="outline" name="trash-outline"></ion-icon> 

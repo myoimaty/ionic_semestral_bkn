@@ -26,7 +26,7 @@ export class AddPage implements OnInit {
   }
 
   addClase(){
-    this.apiServices.addClase(this.clase).subscribe()
+    //this.apiServices.addClase(this.clase).subscribe()
     this.router.navigate(['/apilist'])
     this.exito()
   }

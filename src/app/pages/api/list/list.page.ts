@@ -29,11 +29,13 @@ export class ListPage implements OnInit {
      this.listar();
   }
 
-  listar(){
+  listar(){/*
     this.clasesApi.listClases().subscribe((resp) => {
       //console.log(resp)
       this.listarCLases = resp
     })
     //this.listarCLases = this.ClasesService.getAll()
+  }*/
+  this.firestore.getCollection('clase').subscribe((clase))
   }
 }

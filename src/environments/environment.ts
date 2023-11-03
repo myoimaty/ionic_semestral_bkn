@@ -4,7 +4,16 @@
 
 export const environment = {
   production: false,
-  apiURL:"http://localhost:3000"
+  apiURL:"http://localhost:3000",
+  firebaseConfig : {
+    apiKey: "AIzaSyDEs93DIY400YtrMxnsYSSjlr6SC60T3gU",
+    authDomain: "asisapp-16a7a.firebaseapp.com",
+    projectId: "asisapp-16a7a",
+    storageBucket: "asisapp-16a7a.appspot.com",
+    messagingSenderId: "665021421577",
+    appId: "1:665021421577:web:7c5a24c169ee0fb6ec40d8",
+    measurementId: "G-K7WLY2GPNB"
+  }
 };
 
 /*

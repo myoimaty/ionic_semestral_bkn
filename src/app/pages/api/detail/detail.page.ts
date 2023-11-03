@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ClasesService } from 'src/app/services/api/clases.service';
 import * as QRCode from 'qrcode';
 import Swal from 'sweetalert2';
+import { FirestoreService } from 'src/app/services/firebase/firestore.service';
+import { Iclase } from 'src/app/interfaces/iclase';
 
 
 @Component({
@@ -17,15 +19,12 @@ export class DetailPage implements OnInit {
 
 
   //INSTANCIA que recibe la info
-  clase = {
-    id: '',
-    nombre: '',
-    docente: '',
+  clase! : Iclase;
 
-  }
-
-  constructor(private apiService: ClasesService,
-    private router: Router) { }
+  constructor(private firestore: FirestoreService,
+    private router: Router,
+    private route: ActivatedRoute,
+    ) { }
 
   ngOnInit() {
     this.getClase(this.getId());
@@ -55,18 +54,27 @@ export class DetailPage implements OnInit {
   getId(){
     let url = this.router.url
     let aux = url.split("/",3)
-    let id = parseInt(aux[2])
+    let id = aux[2]
     return id 
   }
 
-  getClase(id: Number){
-    this.apiService.getClase(id).subscribe((resp:any) => {
+  getClase(id: string){
+    /*this.apiService.getClase(id).subscribe((resp:any) => {
       this.clase = {
         id: resp[0].id,
         nombre: resp[0].nombre,
         docente: resp[0].docente
       }
-    })
+    })*/
+    const claseId = this.route.snapshot.paramMap.get('id');
+
+    if ( claseId ) {
+      this.firestore.getClaseById('clase', claseId).subscribe( (clase) => {
+        this.clase = clase || {} as Iclase;
+        this.clase.id = claseId;
+      });
+    }
+
   }
 
   updateClase(){
@@ -76,9 +84,13 @@ export class DetailPage implements OnInit {
   }
 
   deleteClase(){
-    this.apiService.deleteClase(this.clase).subscribe();
-    this.router.navigate(['/apilist']);
-    this.mensaje("Clase eliminada")
+    //this.apiService.deleteClase(this.clase).subscribe();
+    const claseId = this.route.snapshot.paramMap.get('id'); //Captura info que viene desde la lista
+    if (claseId) {
+      this.firestore.deleteDocument('clase', claseId);
+      this.router.navigate(['/apilist']);
+      this.mensaje("Clase eliminada")
+    }
   }
 
   async mensaje(mensaje: string) {

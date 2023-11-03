@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Iclase } from 'src/app/interfaces/iclase';
 import { ClasesService } from 'src/app/services/api/clases.service';
+import { FirestoreService } from 'src/app/services/firebase/firestore.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -20,7 +21,8 @@ export class UpdatePage implements OnInit {
     }
 
   constructor(private apiService: ClasesService,
-    private router: Router) { }
+    private router: Router,
+    private firestore: FirestoreService) { }
 
   ngOnInit() {
     console.log(this.getId)
