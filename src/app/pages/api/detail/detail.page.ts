@@ -21,7 +21,8 @@ export class DetailPage implements OnInit {
   //INSTANCIA que recibe la info
   clase! : Iclase;
 
-  constructor(private firestore: FirestoreService,
+  constructor(
+    private firestore: FirestoreService,
     private router: Router,
     private route: ActivatedRoute,
     ) { }
@@ -32,7 +33,7 @@ export class DetailPage implements OnInit {
   }
 
   generateQRCode() {
-    const classId = this.clase.id.toString();
+    /*const classId = this.clase.id.toString();
     const qrCodeData = `asistencia+1:${classId}`; // Ajusta el formato según tus necesidades
     try {
       QRCode.toDataURL(qrCodeData).then(url => {
@@ -44,7 +45,7 @@ export class DetailPage implements OnInit {
     } catch (error) {
       console.error(error);
       // Maneja el error como desees
-    }
+    }*/
   }
 
   ionViewWillEnter(){
@@ -78,7 +79,7 @@ export class DetailPage implements OnInit {
   }
 
   updateClase(){
-    this.apiService.updateClase(this.clase).subscribe();
+    //this.apiService.updateClase(this.clase).subscribe();
     this.router.navigate(['/apilist']);
     this.mensaje("Clase actualizada")
   }

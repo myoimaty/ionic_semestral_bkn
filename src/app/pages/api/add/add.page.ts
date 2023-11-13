@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Iclase } from 'src/app/interfaces/iclase';
 import { Iclases } from 'src/app/interfaces/iclases';
 import { ClasesService } from 'src/app/services/api/clases.service';
+import { FirestoreService } from 'src/app/services/firebase/firestore.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -19,7 +20,9 @@ export class AddPage implements OnInit {
 
   }
 
-  constructor(private apiServices: ClasesService,
+  constructor(
+    //private apiServices: ClasesService,
+    private firestore: FirestoreService,
     private router: Router) { }
 
   ngOnInit() {
@@ -27,6 +30,7 @@ export class AddPage implements OnInit {
 
   addClase(){
     //this.apiServices.addClase(this.clase).subscribe()
+    this.firestore.createDocument('Clases', this.clase)
     this.router.navigate(['/apilist'])
     this.exito()
   }
