@@ -70,7 +70,7 @@ export class DetailPage implements OnInit {
     const claseId = this.route.snapshot.paramMap.get('id');
 
     if ( claseId ) {
-      this.firestore.getClaseById('clase', claseId).subscribe( (clase) => {
+      this.firestore.getClaseById('Clases', claseId).subscribe( (clase) => {
         this.clase = clase || {} as Iclase;
         this.clase.id = claseId;
       });
@@ -88,7 +88,7 @@ export class DetailPage implements OnInit {
     //this.apiService.deleteClase(this.clase).subscribe();
     const claseId = this.route.snapshot.paramMap.get('id'); //Captura info que viene desde la lista
     if (claseId) {
-      this.firestore.deleteDocument('clase', claseId);
+      this.firestore.deleteDocument('Clases', claseId);
       this.router.navigate(['/apilist']);
       this.mensaje("Clase eliminada")
     }
@@ -102,6 +102,5 @@ export class DetailPage implements OnInit {
       heightAuto: false
     });
   }
-
 
 }

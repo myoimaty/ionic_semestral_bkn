@@ -4,7 +4,7 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-buttons slot="end" [routerLink]="['/apiupdate', clase.id]">
+    <ion-buttons slot="end" *ngIf="clase" [routerLink]="['/apiupdate', clase.id]">
       <ion-icon name="cloud-upload-outline"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
@@ -22,8 +22,6 @@
         <h3>{{ clase.nombre }}</h3>
       </ion-row>
       <ion-text >Docente: {{ clase.docente }} </ion-text>
-      
-      
     </ion-card-header>
   
     <ion-card-content >
