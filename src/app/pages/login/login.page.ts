@@ -27,7 +27,17 @@ export class LoginPage implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.authService.checkAuth()
+    .then((user) => {
+      if(user) {
+        this.router.navigate(['home']);
+      }
+    })
+    .catch((error) => {
+      console.error('Error en auenticacion:', error);
+    })
+  }
 
   ingresar() {
     /*
@@ -35,7 +45,6 @@ export class LoginPage implements OnInit {
     console.log('Usuario que intenta iniciar sesión:', { email, password });
     const isAuthenticated = await this.loginService.authenticate({ email, password });
     
-
     if (isAuthenticated) {
       console.log('Usuario autenticado');
       this.router.navigate(['home']);
@@ -49,8 +58,8 @@ export class LoginPage implements OnInit {
     this.authService.login(email, password);
     if (this.authService) {
       console.log('Usuario autenticado');
-      this.router.navigate(['home']);
-      this.pasaste();
+      //this.router.navigate(['home']);
+      //this.pasaste();
     } else {
       console.log('Credenciales inválidas');
       this.mostrarError(); // Llama a la función para mostrar el mensaje de error
@@ -81,12 +90,22 @@ export class LoginPage implements OnInit {
     
     Toast.fire({
       icon: 'success',
-      title: 'Logeado'
+      title: 'Logueado'
     })
   }
 
   registrar() {
-    this.router.navigate(['crear-usuario']);
+    //this.router.navigate(['crear-usuario']);
+    const { email, password } = this.loginForm.value;
+    this.authService.register(email, password);
+    if (this.authService) {
+      console.log('Usuario registrado');
+      //this.router.navigate(['home']);
+      this.pasaste();
+    } else {
+      console.log('Credenciales inválidas');
+      this.mostrarError(); // Llama a la función para mostrar el mensaje de error
+    }
   }
 
   restaurar() {
