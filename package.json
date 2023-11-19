@@ -25,6 +25,8 @@
     "@auth0/angular-jwt": "^5.1.2",
     "@ionic/angular": "^7.0.0",
     "@ionic/storage": "^4.0.0",
+    "@ngx-translate/core": "^15.0.0",
+    "@ngx-translate/http-loader": "^8.0.0",
     "axios": "^1.5.1",
     "firebase": "^10.6.0",
     "ionic": "^5.4.16",

@@ -5,6 +5,7 @@ import { Clases } from './home.model';
 import { ClasesService } from 'src/app/services/api/clases.service';
 import { FirestoreService } from 'src/app/services/firebase/firestore.service';
 import { AuthfirebaseService } from 'src/app/services/firebase/authfirebase.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
@@ -14,12 +15,17 @@ import { AuthfirebaseService } from 'src/app/services/firebase/authfirebase.serv
 export class HomePage implements OnInit {
 
   listarCLases: any = [];
+  langs: string[] = [];
+  idioma!: string;
 
   constructor(private router: Router,
     //private clasesApi: ClasesService,
     private firestore: FirestoreService,
-    private auth: AuthfirebaseService
-    ) { }
+    private auth: AuthfirebaseService,
+    private transService: TranslateService
+    ) {
+      this.langs = this.transService.getLangs();
+     }
 
   ngOnInit() {
     /*
@@ -36,6 +42,10 @@ export class HomePage implements OnInit {
   logout() {
     this.auth.logout();
     this.router.navigate(['login']);
+  }
+
+  changeLangs(event: any) {
+    this.transService.use(event.detail.value);
   }
 
   listar(){
