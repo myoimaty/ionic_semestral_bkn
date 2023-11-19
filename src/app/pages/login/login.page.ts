@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 import { ToastController } from '@ionic/angular'; // Importa ToastController
 import Swal from 'sweetalert2';
+import { AuthfirebaseService } from 'src/app/services/firebase/authfirebase.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginPage implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private loginService: LoginService,
-    private toastController: ToastController // Inyecta ToastController
+    private toastController: ToastController, // Inyecta ToastController
+    private authService: AuthfirebaseService
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -27,12 +29,25 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {}
 
-  async ingresar() {
-    const { email, password } = this.loginForm.value;
+  ingresar() {
+    /*
+    
     console.log('Usuario que intenta iniciar sesión:', { email, password });
     const isAuthenticated = await this.loginService.authenticate({ email, password });
+    
 
     if (isAuthenticated) {
+      console.log('Usuario autenticado');
+      this.router.navigate(['home']);
+      this.pasaste();
+    } else {
+      console.log('Credenciales inválidas');
+      this.mostrarError(); // Llama a la función para mostrar el mensaje de error
+    }*/
+
+    const { email, password } = this.loginForm.value;
+    this.authService.login(email, password);
+    if (this.authService) {
       console.log('Usuario autenticado');
       this.router.navigate(['home']);
       this.pasaste();
