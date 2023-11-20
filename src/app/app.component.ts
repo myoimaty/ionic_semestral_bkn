@@ -8,6 +8,10 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+
+  langs: string[] = [];
+  idioma!: string;
+
   public appPages = [
     { title: 'Inicio', url: 'home', icon: 'home' },
     { title: 'Perfil', icon: 'person-circle' },
@@ -28,20 +32,30 @@ export class AppComponent {
   constructor(
     private router: Router,
     private menuCotroller: MenuController,
-    private transService: TranslateService
+    private transService: TranslateService,
   ) {
-    this.transService.setDefaultLang('fr');
-    this.transService.addLangs(['en', 'es']);
+    this.langs = this.transService.getLangs();
+    this.transService.setDefaultLang('es');
+    this.transService.addLangs(['en', 'fr']);
   }
 
-  mostrarMenu(){
-    return this.router.url !== '/login'; //no se va a mostrar en el login
+  mostrarMenu() {
+    // La función devuelve verdadero si la URL actual no es ni '/login' ni '/terminos'
+    return this.router.url !== '/login' && this.router.url !== '/terminos';
+  }
+
+  mostrarMenu2(){
+    return this.router.url !== '/terminos'; //no se va a mostrar en el login
   }
 
   mostrarMenuApi(){
     const aux = ['apihome', 'apiadd', 'apilist', 'apiupdate', 'apidelete', 'apidetail']
     return aux.includes(this.router.url.substring(1)) // elimina el "/"
     //return this.router.url == '/apihome';
+  }
+
+  changeLangs(event: any) {
+    this.transService.use(event.detail.value);
   }
 
 

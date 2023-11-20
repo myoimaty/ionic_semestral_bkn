@@ -5,6 +5,7 @@ import { LoginService } from 'src/app/services/login.service';
 import { ToastController } from '@ionic/angular'; // Importa ToastController
 import Swal from 'sweetalert2';
 import { AuthfirebaseService } from 'src/app/services/firebase/authfirebase.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
@@ -13,18 +14,23 @@ import { AuthfirebaseService } from 'src/app/services/firebase/authfirebase.serv
 })
 export class LoginPage implements OnInit {
   loginForm: FormGroup;
+  langs: string[] = [];
+  idioma!: string;
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
     private loginService: LoginService,
     private toastController: ToastController, // Inyecta ToastController
-    private authService: AuthfirebaseService
+    private authService: AuthfirebaseService,
+    private transService: TranslateService
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
+
+    this.langs = this.transService.getLangs();
   }
 
   ngOnInit() {
@@ -114,5 +120,9 @@ export class LoginPage implements OnInit {
 
   docentes() {
     this.router.navigate(['login-docentes']);
+  }
+
+  changeLangs(event: any) {
+    this.transService.use(event.detail.value);
   }
 }

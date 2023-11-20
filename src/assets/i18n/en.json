@@ -1,6 +1,17 @@
 {
-    "clases": "Classes", 
+    "clases": "courses", 
     "bienvenido": "Welcome",
     "selecciona": "Select",
-    "cerrarsesion": "Logout"
+    "cerrarsesion": "Logout",
+    "Recuperar contraseña": "recover password",
+    "Registrar": "sign up",
+    "Ingresar": "sign in",
+    "Contraseña": "password",
+    "Correo Electrónico": "email",
+    "Iniciar Sesión": "login",
+    "docentes": "teachers",
+    "asistencias": "assists",
+    "Feriados": "Holidays",
+    "Estos dias descansas crack":"These days you rest crack",
+    "fechas": "dates"
 }

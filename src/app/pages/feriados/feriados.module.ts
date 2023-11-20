@@ -8,12 +8,15 @@ import { FeriadosPageRoutingModule } from './feriados-routing.module';
 
 import { FeriadosPage } from './feriados.page';
 
+import { TranslateModule } from '@ngx-translate/core';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FeriadosPageRoutingModule
+    FeriadosPageRoutingModule,
+    TranslateModule
   ],
   declarations: [FeriadosPage]
 })

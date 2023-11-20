@@ -1,7 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button>
+      </ion-menu-button>
     </ion-buttons>
     <ion-title>{{ "clases" | translate }}</ion-title>
   </ion-toolbar>
@@ -12,7 +13,7 @@
     <ion-list>
       <img alt="Silhouette of mountains" src="https://ci4.googleusercontent.com/proxy/WAvysQcZRiEcPgVg0RuGK5_JdVKC972piFHN6SgGC_XcGXLnNEUxMJyTi9hf2HX20xeasYGstZiulfjBrWgKW2pfskl-gY-RFpd5tdhptMmxx7yPDLo0IU6E3megc7vNcbgp9OdnYBSsPMUAltl9hClJHus_dBNZ13JjPkZhWSRrVmQ3cp6zbsp77C5Ts04VNzbbIFjVzNhQg5awtdf8zQrBMZhtSJFHUrYOCA=s0-d-e1-ft#https://assets-sam.mkt.dynamics.com/bd1f2d8e-014c-4485-b5d2-b7ab4a4ef390/digitalassets/images/89f81215-ae6e-ee11-8179-002248e0d695?ts=638333372570747656" />
       <ion-list-header color="secondary">
-        <ion-label>Clases</ion-label>
+        <ion-label>{{ "clases" | translate }}</ion-label>
       </ion-list-header>
     
       <ion-item *ngFor="let aux of listarCLases" [routerLink]="['/home/', aux.id]">
@@ -22,7 +23,7 @@
               <ion-label class="text-limit">{{ aux.nombre }}</ion-label>
             </ion-button>
           </ion-row>
-          <ion-text class="text-limit">Docente: {{ aux.docente }}</ion-text>
+          <ion-text class="text-limit">{{"docentes" | translate}}: {{ aux.docente }}</ion-text>
         </ion-grid>
       </ion-item>
     </ion-list>

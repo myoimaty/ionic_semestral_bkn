@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { AsistenciasPageRoutingModule } from './asistencias-routing.module';
 
 import { AsistenciasPage } from './asistencias.page';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AsistenciasPageRoutingModule
+    AsistenciasPageRoutingModule,
+    TranslateModule
   ],
   declarations: [AsistenciasPage]
 })

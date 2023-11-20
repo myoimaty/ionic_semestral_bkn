@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>asistencias</ion-title>
+    <ion-title>{{"asistencias" | translate }}</ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -11,7 +11,7 @@
   <ion-card>
     <ion-card-header>
       <ion-card-title>{{ clase.nombre }}</ion-card-title>
-      <ion-card-subtitle>profesor: {{ clase.docente }}</ion-card-subtitle>
+      <ion-card-subtitle>{{"docentes" | translate }}: {{ clase.docente }}</ion-card-subtitle>
       
     </ion-card-header>
     <ion-card-subtitle class="centrar">clases 8 de 9 (89%) </ion-card-subtitle>
@@ -20,7 +20,7 @@
       <ion-accordion-group>
         <ion-accordion value="first">
           <ion-item slot="header" color="light">
-            <ion-label>Fechas</ion-label>
+            <ion-label>{{"Fechas" | translate }}</ion-label>
           </ion-item>
           <div class="ion-padding" slot="content">
             <ion-label color="success">01-09-23</ion-label>

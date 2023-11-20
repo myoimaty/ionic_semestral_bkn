@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClasesService } from 'src/app/services/api/clases.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Clases } from '../home.model';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -11,15 +12,23 @@ import { Clases } from '../home.model';
 })
 export class AsistenciasPage implements OnInit {
 
+  langs: string[] = [];
+  idioma!: string;
+
   clase = {
     id: '',
     nombre: '',
     docente: '',
 
   }
+  
 
   constructor(private apiService: ClasesService,
-    private router: Router) { }
+    private router: Router,
+    private transService: TranslateService) 
+    { 
+      this.langs = this.transService.getLangs();
+    }
 
   ngOnInit() {
   }
@@ -43,5 +52,8 @@ export class AsistenciasPage implements OnInit {
         docente: resp[0].docente
       }
     })
+  }
+  changeLangs(event: any) {
+    this.transService.use(event.detail.value);
   }
 }
