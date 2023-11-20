@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { RestContrasenaPageRoutingModule } from './rest-contrasena-routing.module';
 
 import { RestContrasenaPage } from './rest-contrasena.page';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RestContrasenaPageRoutingModule
+    RestContrasenaPageRoutingModule,
+    TranslateModule
   ],
   declarations: [RestContrasenaPage]
 })

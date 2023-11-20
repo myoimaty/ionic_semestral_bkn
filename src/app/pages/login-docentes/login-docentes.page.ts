@@ -45,16 +45,26 @@ export class LoginDocentesPage {
       console.log('Por favor, ingrese correo y contraseña.');
       this.nada()
       // Puedes mostrar un mensaje al usuario aquí si lo deseas
+      
     }*/
 
-    if(this.email && this.password) {
-      this.authService.loginDocente(this.email, this.password);
-      this.router.navigate(['apilist']);
-      this.pasaste()
+    if (this.email && this.password) {
+      // Verifica si el correo electrónico termina con "@profesorduoc.cl"
+      if (this.email.toLowerCase().endsWith('@profesorduoc.cl')) {
+        // El correo electrónico es válido, realiza el inicio de sesión
+        this.authService.loginDocente(this.email, this.password);
+        this.router.navigate(['apilist']);
+        this.pasaste();
+      } else {
+        // El correo electrónico no es válido
+        console.log('Solo se permiten correos electrónicos de "@profesorduoc.cl".');
+        this.tuno()
+        // Puedes mostrar un mensaje al usuario aquí si lo deseas
+      }
     } else {
       // Informa al usuario que debe ingresar ambos campos
       console.log('Por favor, ingrese correo y contraseña.');
-      this.nada()
+      this.nada();
       // Puedes mostrar un mensaje al usuario aquí si lo deseas
     }
   }

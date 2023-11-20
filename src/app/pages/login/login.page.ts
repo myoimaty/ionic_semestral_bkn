@@ -46,29 +46,24 @@ export class LoginPage implements OnInit {
   }
 
   ingresar() {
-    /*
-    
-    console.log('Usuario que intenta iniciar sesión:', { email, password });
-    const isAuthenticated = await this.loginService.authenticate({ email, password });
-    
-    if (isAuthenticated) {
-      console.log('Usuario autenticado');
-      this.router.navigate(['home']);
-      this.pasaste();
-    } else {
-      console.log('Credenciales inválidas');
-      this.mostrarError(); // Llama a la función para mostrar el mensaje de error
-    }*/
-
     const { email, password } = this.loginForm.value;
+  
+    if (!email || !password) {
+      console.log('Por favor, ingrese correo y contraseña.');
+      this.nada(); // Muestra un mensaje de error
+      return;
+    }
+  
     this.authService.login(email, password);
+  
     if (this.authService) {
       console.log('Usuario autenticado');
-      //this.router.navigate(['home']);
-      //this.pasaste();
+      this.pasaste();
+      // this.router.navigate(['home']);
+      // this.pasaste();
     } else {
       console.log('Credenciales inválidas');
-      this.mostrarError(); // Llama a la función para mostrar el mensaje de error
+      this.mostrarError(); // Muestra un mensaje de error
     }
   }
 
@@ -101,17 +96,8 @@ export class LoginPage implements OnInit {
   }
 
   registrar() {
-    //this.router.navigate(['crear-usuario']);
-    const { email, password } = this.loginForm.value;
-    this.authService.register(email, password);
-    if (this.authService) {
-      console.log('Usuario registrado');
-      //this.router.navigate(['home']);
-      this.pasaste();
-    } else {
-      console.log('Credenciales inválidas');
-      this.mostrarError(); // Llama a la función para mostrar el mensaje de error
-    }
+    this.router.navigate(['crear-usuario']);
+    
   }
 
   restaurar() {
@@ -124,5 +110,23 @@ export class LoginPage implements OnInit {
 
   changeLangs(event: any) {
     this.transService.use(event.detail.value);
+  }
+
+  async nada() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    Toast.fire({
+      icon: 'error',
+      title: 'Por favor, ingrese correo y contraseña.'
+    })
   }
 }
