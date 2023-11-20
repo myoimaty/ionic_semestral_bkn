@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { DocenteLoginService } from 'src/app/services/docente-login.service';
+import { AuthfirebaseService } from 'src/app/services/firebase/authfirebase.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -13,10 +14,13 @@ export class LoginDocentesPage {
   email: string = '';
   password: string = '';
 
-  constructor(private router: Router, private docenteLoginService: DocenteLoginService,
-    private toastController: ToastController) {}
+  constructor(private router: Router,
+    private docenteLoginService: DocenteLoginService,
+    private toastController: ToastController,
+    private authService: AuthfirebaseService
+    ) {}
 
-  ingresar() {
+  ingresar() {/*
     if (this.email && this.password) {
       this.docenteLoginService.authenticate({ email: this.email, password: this.password }).then(isAuthenticated => {
         if (isAuthenticated) {
@@ -30,6 +34,17 @@ export class LoginDocentesPage {
           // Puedes mostrar un mensaje de error al usuario aquí si lo deseas
         }
       });
+    } else {
+      // Informa al usuario que debe ingresar ambos campos
+      console.log('Por favor, ingrese correo y contraseña.');
+      this.nada()
+      // Puedes mostrar un mensaje al usuario aquí si lo deseas
+    }*/
+
+    if(this.email && this.password) {
+      this.authService.loginDocente(this.email, this.password);
+      this.router.navigate(['apilist']);
+      this.pasaste()
     } else {
       // Informa al usuario que debe ingresar ambos campos
       console.log('Por favor, ingrese correo y contraseña.');
@@ -90,7 +105,7 @@ export class LoginDocentesPage {
     
     Toast.fire({
       icon: 'error',
-      title: 'tu no ere profe 👿'
+      title: 'tu no eres profe 👿'
     })
   }
 }

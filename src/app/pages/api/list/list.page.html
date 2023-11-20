@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>home</ion-title>
+    <ion-title>Home</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -25,13 +25,16 @@
     </ion-item>
   </ion-list>
 
-  <ion-fab  horizontal="center">
+  <ion-fab horizontal="center">
     <ion-fab-button>
       <ion-icon (click)="addClase()" name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
-
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-button (click)="logout()">Cerrar Sesion</ion-button>
+  </ion-fab>
+  
 
   <!--<ion-fab slot="fixed" vertical="bottom" horizontal="end">
     <ion-fab-button>
