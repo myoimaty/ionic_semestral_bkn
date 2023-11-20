@@ -21,6 +21,18 @@ export class AuthfirebaseService {
     }
   }
 
+  async loginDocente(email: string, pass: string) {
+    try {
+      const user = await this.auth.signInWithEmailAndPassword(email,pass);
+      if(user) {
+        this.router.navigate(['apilist']);
+      }
+      console.log(user);
+    } catch (error) {
+      console.error('Error en login: ', error);
+    }
+  }
+
   async register(email: string, pass: string) {
     try {
       const user = await this.auth.createUserWithEmailAndPassword(email,pass);
