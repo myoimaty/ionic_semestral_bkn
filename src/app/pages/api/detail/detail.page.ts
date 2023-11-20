@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ClasesService } from 'src/app/services/api/clases.service';
-import * as QRCode from 'qrcode';
+//import { ClasesService } from 'src/app/services/api/clases.service';
 import Swal from 'sweetalert2';
 import { FirestoreService } from 'src/app/services/firebase/firestore.service';
 import { Iclase } from 'src/app/interfaces/iclase';
@@ -13,9 +12,6 @@ import { Iclase } from 'src/app/interfaces/iclase';
   styleUrls: ['./detail.page.scss'],
 })
 export class DetailPage implements OnInit {
-
-  qrCodeImageUrl: string = '';
-  scannedClasses: string[] = [];
 
 
   //INSTANCIA que recibe la info
@@ -29,23 +25,10 @@ export class DetailPage implements OnInit {
 
   ngOnInit() {
     this.getClase(this.getId());
-    this.generateQRCode(); // Genera el código QR cuando la página se carga
   }
 
-  generateQRCode() {
-    /*const classId = this.clase.id.toString();
-    const qrCodeData = `asistencia+1:${classId}`; // Ajusta el formato según tus necesidades
-    try {
-      QRCode.toDataURL(qrCodeData).then(url => {
-        this.qrCodeImageUrl = url;
-      }).catch(error => {
-        console.error(error);
-        // Maneja el error como desees
-      });
-    } catch (error) {
-      console.error(error);
-      // Maneja el error como desees
-    }*/
+  getQRCodeData(): string {
+    return `${this.clase.nombre}, ${this.clase.docente}`;
   }
 
   ionViewWillEnter(){

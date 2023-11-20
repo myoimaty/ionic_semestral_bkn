@@ -17,24 +17,14 @@
       <ion-icon slot="end" fill="outline" name="trash-outline"></ion-icon> 
     </ion-buttons> 
     <ion-card-header>
-      <img class="centrar" [src]="qrCodeImageUrl" alt="QR Code">
       <ion-row >  
         <h3>{{ clase.nombre }}</h3>
       </ion-row>
       <ion-text >{{"docentes" | translate}}: {{ clase.docente }} </ion-text>
     </ion-card-header>
   
-    <ion-card-content >
-      <ion-accordion-group *ngFor="let scannedClass of scannedClasses">
-        <ion-accordion [value]="scannedClass">
-          <ion-item slot="header" color="light">
-            <ion-label>Registro de clases</ion-label>
-          </ion-item>
-          <div class="ion-padding" slot="content">
-            <ion-label color="primary">{{ scannedClass }}</ion-label>
-          </div>
-        </ion-accordion>
-      </ion-accordion-group>
-    </ion-card-content>
+    <h6>QR:</h6>
+    <qrcode [qrdata]="getQRCodeData()" [width]="300"></qrcode>
+
   </ion-card>
 </ion-content>

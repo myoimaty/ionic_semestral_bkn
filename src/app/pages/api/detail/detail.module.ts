@@ -10,13 +10,16 @@ import { DetailPage } from './detail.page';
 
 import { TranslateModule } from '@ngx-translate/core';
 
+import { QRCodeModule } from 'angularx-qrcode';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     DetailPageRoutingModule,
-    TranslateModule
+    TranslateModule,
+    QRCodeModule
   ],
   declarations: [DetailPage]
 })

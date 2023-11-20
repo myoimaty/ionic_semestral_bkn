@@ -27,6 +27,7 @@
     "@ionic/storage": "^4.0.0",
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
+    "angularx-qrcode": "^16.0.2",
     "axios": "^1.5.1",
     "firebase": "^10.6.0",
     "ionic": "^5.4.16",
