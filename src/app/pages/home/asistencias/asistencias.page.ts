@@ -56,4 +56,8 @@ export class AsistenciasPage implements OnInit {
   changeLangs(event: any) {
     this.transService.use(event.detail.value);
   }
+
+  ubicacion() {
+    this.router.navigate(['ubicacion'])
+  }
 }
