@@ -8,12 +8,16 @@ import { UpdatePageRoutingModule } from './update-routing.module';
 
 import { UpdatePage } from './update.page';
 
+import { TranslateModule } from '@ngx-translate/core';
+
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    UpdatePageRoutingModule
+    UpdatePageRoutingModule,
+    TranslateModule
   ],
   declarations: [UpdatePage]
 })

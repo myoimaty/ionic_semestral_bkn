@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 import { DocenteLoginService } from 'src/app/services/docente-login.service';
 import { AuthfirebaseService } from 'src/app/services/firebase/authfirebase.service';
 import Swal from 'sweetalert2';
@@ -11,14 +12,19 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login-docentes.page.scss'],
 })
 export class LoginDocentesPage {
+  langs: string[] = [];
+  idioma!: string;
   email: string = '';
   password: string = '';
 
   constructor(private router: Router,
     private docenteLoginService: DocenteLoginService,
     private toastController: ToastController,
-    private authService: AuthfirebaseService
-    ) {}
+    private authService: AuthfirebaseService,
+    private transService: TranslateService
+    ) {
+      this.langs = this.transService.getLangs();
+    }
 
   ingresar() {/*
     if (this.email && this.password) {
@@ -107,6 +113,9 @@ export class LoginDocentesPage {
       icon: 'error',
       title: 'tu no eres profe 👿'
     })
+  }
+  changeLangs(event: any) {
+    this.transService.use(event.detail.value);
   }
 }
 

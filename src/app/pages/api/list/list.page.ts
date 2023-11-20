@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { ClasesService } from 'src/app/services/api/clases.service';
 import { AuthfirebaseService } from 'src/app/services/firebase/authfirebase.service';
 import { FirestoreService } from 'src/app/services/firebase/firestore.service';
@@ -10,6 +11,9 @@ import { FirestoreService } from 'src/app/services/firebase/firestore.service';
   styleUrls: ['./list.page.scss'],
 })
 export class ListPage implements OnInit {
+
+  langs: string[] = [];
+  idioma!: string;
   
   listarCLases: any = [];
 
@@ -17,8 +21,11 @@ export class ListPage implements OnInit {
     private router: Router,
     //private clasesApi: ClasesService
     private firestore:  FirestoreService,
-    private auth: AuthfirebaseService
-  ) { }
+    private auth: AuthfirebaseService,
+    private transService: TranslateService
+  ) {
+    this.langs = this.transService.getLangs();
+   }
 
   ngOnInit() {
     /*
@@ -40,7 +47,7 @@ export class ListPage implements OnInit {
 
   logout() {
     this.auth.logout();
-    this.router.navigate(['login-docentes']);
+    this.router.navigate(['login']);
   }
 
   listar(){/*
@@ -53,5 +60,8 @@ export class ListPage implements OnInit {
   this.firestore.getCollection('Clases').subscribe((clase) => {
     this.listarCLases = clase
   })
+  }
+  changeLangs(event: any) {
+    this.transService.use(event.detail.value);
   }
 }

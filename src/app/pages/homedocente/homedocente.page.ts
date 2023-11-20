@@ -3,6 +3,7 @@ import { Clases } from '../home/home.model';
 import { ClasesService } from 'src/app/services/clases.service';
 import { AlertController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -12,11 +13,17 @@ import { Router } from '@angular/router';
 })
 export class HomedocentePage implements OnInit {
 
+  langs: string[] = [];
+  idioma!: string;
+
   listarCLases: Clases[] = [];
   clases! : Clases;
   
 
-  constructor(private ClasesService: ClasesService, private toastController: ToastController, private router: Router, private alertCotroller: AlertController) { }
+  constructor(private ClasesService: ClasesService, private toastController: ToastController, private router: Router, private alertCotroller: AlertController,private transService: TranslateService) 
+  { 
+    this.langs = this.transService.getLangs();
+  }
 
   ngOnInit() {
     this.listarCLases = this.ClasesService.getAll()
@@ -33,5 +40,9 @@ export class HomedocentePage implements OnInit {
 
   asistencia() {
     this.router.navigate(['asistencias'])
+  }
+
+  changeLangs(event: any) {
+    this.transService.use(event.detail.value);
   }
 }

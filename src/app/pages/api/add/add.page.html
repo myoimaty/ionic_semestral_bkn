@@ -12,7 +12,7 @@
   <ion-card>
     <ion-card-content>
     <ion-card-header>
-    <ion-card-title class="centrado">Agregar una clase</ion-card-title>
+    <ion-card-title class="centrado">{{"Agregar" | translate}}</ion-card-title>
     </ion-card-header>
       <ion-item>
         <ion-input #nombre [(ngModel)]="clase.nombre" type="text" label="Nombre" labelPLacement="floating" placeholder="ej: matematicas"></ion-input>
@@ -20,7 +20,7 @@
       <ion-item>
         <ion-input #docente [(ngModel)]="clase.docente" type="text" label="Docente" labelPLacement="floating" placeholder="ej: Mario castañeda"></ion-input>
       </ion-item>
-      <ion-button color="secondary" (click)="addClase()">agregar</ion-button>
+      <ion-button color="secondary" (click)="addClase()">{{"Agregar" | translate}}</ion-button>
     </ion-card-content>
   </ion-card>
 </ion-content>

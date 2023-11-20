@@ -8,13 +8,15 @@ import { LoginDocentesPageRoutingModule } from './login-docentes-routing.module'
 
 import { LoginDocentesPage } from './login-docentes.page';
 import { CardComponent } from 'src/app/components/card/card.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LoginDocentesPageRoutingModule
+    LoginDocentesPageRoutingModule,
+    TranslateModule
   ],
   declarations: [LoginDocentesPage, CardComponent]
 })

@@ -10,7 +10,7 @@
 <ion-content [fullscreen]="true">
   <ion-list>
     <ion-list-header color="secondary">
-      <ion-label>Clases</ion-label>
+      <ion-label>{{ "clases" | translate }}</ion-label>
     </ion-list-header>
   
     <ion-item *ngFor="let aux of listarCLases"[routerLink]="['/apidetail/', aux.id]"><!---->
@@ -20,7 +20,7 @@
             <ion-label class="text-limit">{{ aux.nombre }}</ion-label>
           </ion-button>
         </ion-row>
-        <ion-text class="text-limit">Docente: {{ aux.docente }}</ion-text>
+        <ion-text class="text-limit">{{"docentes" | translate}}: {{ aux.docente }}</ion-text>
       </ion-grid>
     </ion-item>
   </ion-list>
@@ -32,7 +32,7 @@
   </ion-fab>
 
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-    <ion-button (click)="logout()">Cerrar Sesion</ion-button>
+    <ion-button (click)="logout()">{{ "cerrarsesion" | translate }}</ion-button>
   </ion-fab>
   
 

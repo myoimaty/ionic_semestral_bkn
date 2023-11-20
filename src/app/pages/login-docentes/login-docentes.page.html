@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Docentes</ion-title>
+    <ion-title>{{"docentes" | translate}}</ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -12,7 +12,7 @@
     <img alt="Silhouette of mountains" src="https://aimchile.cl/wp-content/uploads/2022/03/web-b3.png" />
     <ion-card-header>
       <div class="centrar">
-        <ion-card-title>Iniciar Sesión</ion-card-title>
+        <ion-card-title>{{"Iniciar Sesión" | translate}}</ion-card-title>
       </div>
     </ion-card-header>
   
@@ -26,7 +26,7 @@
     </ion-card-content>
     
     <div class="centrar">
-      <ion-button color="secondary" shape="round" (click)="ingresar()">Ingresar</ion-button>
+      <ion-button color="secondary" shape="round" (click)="ingresar()">{{"Ingresar" | translate}}</ion-button>
     </div>
   </ion-card>
 </ion-content>
