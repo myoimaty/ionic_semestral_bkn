@@ -11,7 +11,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { environment } from 'src/environments/environment';
+//import { environment } from 'src/environments/environment';
 
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -22,7 +22,16 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    //AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp({
+      apiKey: "AIzaSyDEs93DIY400YtrMxnsYSSjlr6SC60T3gU",
+      authDomain: "asisapp-16a7a.firebaseapp.com",
+      projectId: "asisapp-16a7a",
+      storageBucket: "asisapp-16a7a.appspot.com",
+      messagingSenderId: "665021421577",
+      appId: "1:665021421577:web:7c5a24c169ee0fb6ec40d8",
+      measurementId: "G-K7WLY2GPNB"
+    }),
     AngularFireAuthModule,
     AngularFirestoreModule,
     TranslateModule.forRoot({
