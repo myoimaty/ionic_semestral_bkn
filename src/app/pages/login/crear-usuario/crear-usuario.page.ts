@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Iusuario } from 'src/app/interfaces/iusuario';
 import { UsuariosService } from 'src/app/services/api/usuarios.service';
+import { AuthfirebaseService } from 'src/app/services/firebase/authfirebase.service';
 import { UsuariosrandomService } from 'src/app/services/usuariosrandom.service';
 import Swal from 'sweetalert2';
 
@@ -25,7 +26,8 @@ export class CrearUsuarioPage implements OnInit {
     private router: Router,
     public fb: FormBuilder,
     private usuariosRandom: UsuariosrandomService,
-    private apiServices: UsuariosService
+    private apiServices: UsuariosService,
+    private authService: AuthfirebaseService
   ) {
     
     this.loginForm = this.fb.group({
@@ -60,10 +62,17 @@ export class CrearUsuarioPage implements OnInit {
   }
 
   addUser() {
+    /*
     this.apiServices.addUser(this.usuario).subscribe(() => {
       this.exito()
       this.router.navigate(['/home']);
     });
+    */
+   if (this.usuario.email && this.usuario.password) {
+    this.authService.register(this.usuario.email, this.usuario.password);
+    this.exito();
+    this.router.navigate(['/home']);
+   }
   }
 
   async exito() {
