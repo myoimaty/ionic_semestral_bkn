@@ -29,7 +29,7 @@ export class UbicacionPage implements OnInit {
   }
 
   scanQR() {
-    this.router.navigate(['scan-qr'])
+    this.router.navigate(['lector'])
   }
 
 }

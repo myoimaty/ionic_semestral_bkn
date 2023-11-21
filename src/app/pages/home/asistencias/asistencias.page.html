@@ -8,10 +8,13 @@
 </ion-header>
 
 <ion-content >
-  <ion-card>
+  <ion-card *ngIf="clase">
+      <ion-icon slot="end" fill="outline" name="trash-outline"></ion-icon> 
     <ion-card-header>
-      <ion-card-title>{{ clase.nombre }}</ion-card-title>
-      <ion-card-subtitle>{{"docentes" | translate }}: {{ clase.docente }}</ion-card-subtitle>
+      <ion-row >  
+        <h3>{{ clase.nombre }}</h3>
+      </ion-row>
+      <ion-text >{{"docentes" | translate}}: {{ clase.docente }} </ion-text>
       
     </ion-card-header>
     <ion-card-subtitle class="centrar">clases 8 de 9 (89%) </ion-card-subtitle>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-terminos',
@@ -7,10 +8,16 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./terminos.page.scss'],
 })
 export class TerminosPage implements OnInit {
+
+  langs: string[] = [];
+  idioma!: string;
   terminosAceptados = false;
   ngOnInit() {
   }
-  constructor(private navCtrl: NavController) { }
+  constructor(private navCtrl: NavController,
+    private transService: TranslateService) { 
+      this.langs = this.transService.getLangs();
+    }
   aceptarTerminos() {
     // Guarda el estado de términos aceptados y luego navega a la página principal.
     // Puedes usar el NavController para la navegación.
@@ -19,6 +26,9 @@ export class TerminosPage implements OnInit {
   }
   onCheckboxChange() {
     this.terminosAceptados = !this.terminosAceptados; // Cambia el estado del checkbox
+  }
+  changeLangs(event: any) {
+    this.transService.use(event.detail.value);
   }
   
   

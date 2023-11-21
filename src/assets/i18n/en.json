@@ -18,5 +18,17 @@
     "Edita": "update",
     "Recuperar": "recover password",
     "Ingresa tu correo para recuperar tu contraseña" : "Enter your email to recover your password",
-    "Enviar": "send"
+    "Enviar": "send",
+    "stopscan": "stop scanning",
+    "initscan": "start scan",
+    "1": "Acceptance of Terms By using the Asistencio application, you agree to comply with these terms and conditions. If you do not agree with any part of these terms, please do not use our application",
+    "2":"Responsible Use Asistencio is provided to help you manage attendance in your high school classes. It is your responsibility to use the application responsibly and ethically. You should not use Asistencio for any illegal or inappropriate activity.",
+    "3":"Privacy and Security We respect your privacy and are committed to protecting the security of your data. The information you provide through Asistencio is handled in accordance with our Privacy Policy. Please make sure you read and understand our privacy policy before to use the application.",
+    "4":"Updates and Changes We reserve the right to make changes to Asistencio, including updates, improvements or modifications at any time and without prior notice. We may also change these terms and conditions at any time. It is your responsibility to periodically review these terms to be aware of the modifications.",
+    "5":"Limitation of Liability Support is provided 'as is' and 'as available'. We do not warrant that the application will be secure or error-free. In no event will we be liable for indirect, incidental or consequential damages arising from the use of Assistance.",
+    "6":"Contact If you have questions about these terms and conditions, please contact us at Asistencio@contacto.com or through the contact section in the application",
+    "7":"Thank you for trusting Asistencio.",
+    "acepto": "I have read and accept the terms",
+    "please": "Please read these terms and conditions carefully before using the Assistance application.",
+    "porfa": "Terms and Conditions"
 }

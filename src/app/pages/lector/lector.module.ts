@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { TerminosPageRoutingModule } from './terminos-routing.module';
+import { LectorPageRoutingModule } from './lector-routing.module';
 
-import { TerminosPage } from './terminos.page';
+import { LectorPage } from './lector.page';
 import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { TranslateModule } from '@ngx-translate/core';
     CommonModule,
     FormsModule,
     IonicModule,
-    TerminosPageRoutingModule,
+    LectorPageRoutingModule,
     TranslateModule
   ],
-  declarations: [TerminosPage]
+  declarations: [LectorPage]
 })
-export class TerminosPageModule {}
+export class LectorPageModule {}

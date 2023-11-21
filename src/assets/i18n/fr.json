@@ -2,7 +2,7 @@
     "clases": "Des classes", 
     "bienvenido" : "Bienvenue",
     "selecciona": "Choisir",
-    "cerrarsesion": "Ulala",
+    "cerrarsesion": "fermer la session",
     "Recuperar contraseña": "récupérer le mot de passe",
     "Registrar": "registre",
     "Ingresar": "commencer la session",
@@ -18,5 +18,17 @@
     "Edita": "mettre à jour une classe",
     "Recuperar": "récupérer le mot de passe",
     "Ingresa tu correo para recuperar tu contraseña" : "Entrez votre email pour récupérer votre mot de passe",
-    "Enviar": "envoyer"
+    "Enviar": "envoyer",
+    "stopscan": "detener escaneo",
+    "initscan": "lancer l'analyse",
+    "1": "Acceptation des conditions En utilisant l'application Asistencio, vous acceptez de respecter ces termes et conditions. Si vous n'êtes pas d'accord avec une partie de ces conditions, veuillez ne pas utiliser notre application",
+    "2": "Utilisation responsable Asistencio est fourni pour vous aider à gérer la fréquentation de vos cours de lycée. Il est de votre responsabilité d'utiliser l'application de manière responsable et éthique. Vous ne devez pas utiliser Asistencio pour toute activité illégale ou inappropriée.",
+    "3": "Confidentialité et sécurité Nous respectons votre vie privée et nous nous engageons à protéger la sécurité de vos données. Les informations que vous fournissez via Asistencio sont traitées conformément à notre politique de confidentialité. Veuillez vous assurer de lire et de comprendre notre politique de confidentialité avant de utiliser l'application.",
+    "4": "Mises à jour et modifications Nous nous réservons le droit d'apporter des modifications à Asistencio y compris des mises à jour, des améliorations ou des modifications, à tout moment et sans préavis. Nous pouvons également modifier ces termes et conditions à tout moment. Il est de votre responsabilité de périodiquement consultez ces conditions pour être au courant des modifications.",
+    "5": "Limitation de responsabilité Le support est fourni « tel quel » et « tel que disponible ». Nous ne garantissons pas que l'application sera sécurisée ou sans erreur. En aucun cas, nous ne serons responsables des dommages indirects, accessoires ou consécutifs. découlant de l'utilisation de l'Assistance.",
+    "6": "Contact Si vous avez des questions sur ces termes et conditions, veuillez nous contacter à Asistencio@contacto.com ou via la section contact de l'application",
+    "7": "Merci de faire confiance à Asistencio.",
+    "acepto" : "J'ai lu et j'accepte les conditions",
+    "porfa": "Veuillez lire attentivement ces termes et conditions avant d'utiliser l'application Assistance.",
+    "terms": "Conditions générales"
 }

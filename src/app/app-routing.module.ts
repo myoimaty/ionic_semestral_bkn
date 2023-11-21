@@ -113,6 +113,10 @@ const routes: Routes = [
   {
     path: 'scan-qr',
     loadChildren: () => import('./pages/scan-qr/scan-qr.module').then( m => m.ScanQRPageModule)
+  },
+  {
+    path: 'lector',
+    loadChildren: () => import('./pages/lector/lector.module').then( m => m.LectorPageModule)
   }
 
 
