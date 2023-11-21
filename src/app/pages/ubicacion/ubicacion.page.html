@@ -6,4 +6,9 @@
 
 <ion-content [fullscreen]="true">
   <div id="map"></div>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon (click)="scan()" name="qr-code-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

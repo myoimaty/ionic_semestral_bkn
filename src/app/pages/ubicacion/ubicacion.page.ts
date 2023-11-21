@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import * as L from 'leaflet';
 
 @Component({
@@ -10,7 +11,7 @@ export class UbicacionPage implements OnInit {
 
   map!: L.Map;
   
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.map = L.map('map', {
@@ -25,6 +26,10 @@ export class UbicacionPage implements OnInit {
       this.map.invalidateSize();
     }, 0);
     
+  }
+
+  scan() {
+    this.router.navigate(['scan-qr'])
   }
 
 }
