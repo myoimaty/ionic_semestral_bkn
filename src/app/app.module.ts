@@ -22,7 +22,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
-    //AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireModule.initializeApp({
       apiKey: "AIzaSyDEs93DIY400YtrMxnsYSSjlr6SC60T3gU",
       authDomain: "asisapp-16a7a.firebaseapp.com",
