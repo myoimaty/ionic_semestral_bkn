@@ -41,7 +41,7 @@ export class AppComponent {
 
   mostrarMenu() {
     // La función devuelve verdadero si la URL actual no es ni '/login' ni '/terminos'
-    return this.router.url !== '/login' && this.router.url !== '/terminos' && this.router.url !== '/login-docentes';
+    return this.router.url !== '/login' && this.router.url !== '/terminos' && this.router.url !== '/login-docentes'&& this.router.url !== '/rest-contrasena';
   }
 
   mostrarMenu2(){

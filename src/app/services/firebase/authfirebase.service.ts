@@ -61,4 +61,13 @@ export class AuthfirebaseService {
       });
     });
   }
+
+  async recuperar(email: string) {
+    try {
+      await this.auth.sendPasswordResetEmail(email);
+      console.log('Correo de recuperación de contraseña enviado exitosamente.');
+    } catch (error) {
+      console.error('Error al enviar el correo de recuperación de contraseña:', error);
+    }
+  }
 }

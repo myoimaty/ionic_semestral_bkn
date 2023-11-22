@@ -1,34 +1,44 @@
 
-<ion-header>
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">lector</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button>
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>scanner</ion-title>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content>
+ 
+ <ion-content>
   <!-- Agrega un botón para iniciar el escaneo -->
-  <video *ngIf="scanActive" #video id="video" width="100%" height="auto" autoplay playsinline></video>
-
+  <video class="video" *ngIf="scanActive" #video id="video" width="100%" height="auto" autoplay playsinline></video>
+ 
   <!-- Botón para detener el escaneo -->
-  <ion-button expand="full" (click)="stopScan()" *ngIf="scanActive">
-    {{"stopscan"|translate}}
+  <ion-button color="danger" expand="full" (click)="stopScan()" *ngIf="scanActive">
+     {{"stopscan"|translate}}
   </ion-button>
-
+ 
   <!-- Agregar un botón para reiniciar el escaneo -->
   <ion-button expand="full" (click)="startScan()"*ngIf="!scanActive">
-    {{"initscan"|translate}}
+     {{"initscan"|translate}}
   </ion-button>
-
+ 
   <!-- Muestra el resultado del escaneo -->
   <ion-item *ngIf="scanResult">
-    <ion-text>{{ scanResult }}</ion-text>
+     <ion-text>{{ scanResult }}</ion-text>
   </ion-item>
-
+ 
   <!-- Agrega el elemento de video para mostrar la cámara -->
-  <video #video id="video" width="100%" height="auto" autoplay playsinline></video>
-
+  <video class="video" #video id="video" width="100%" height="auto" autoplay playsinline></video>
+ 
   <!-- Agrega el elemento de lienzo para dibujar el contenido de la cámara -->
-  <canvas #canvas id="canvas" width="25%" height="auto"></canvas>
-</ion-content>
+  <canvas class="video" #canvas id="canvas" width="25%" height="auto"></canvas>
+ </ion-content>
+
+ <style>
+  video {
+     display: block;
+     margin: 0 auto;
+  }
+ </style>

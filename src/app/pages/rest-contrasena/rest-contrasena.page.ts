@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
+import { AuthfirebaseService } from '../../services/firebase/authfirebase.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -9,37 +11,55 @@ import Swal from 'sweetalert2';
 })
 export class RestContrasenaPage implements OnInit {
 
-  constructor(private toastController: ToastController) { }
+  public email: string = '';
+  public alertButtons = ['OK'];
+
+  constructor(private router: Router, private alertController: AlertController, private authService: AuthfirebaseService) { }
 
   ngOnInit() {
   }
 
-  mensaje(usuario: any) {
-    const usuarioValue = usuario.value; // Obtener el valor del campo de correo electrónico
-    if (!usuarioValue) {
-      // Mostrar un mensaje de error si el campo está vacío
-      this.mostrarError("Por favor, ingrese su correo antes de enviar.");
+  async recuperarContrasena() {
+    if (this.email) {
+      try {
+        await this.authService.recuperar(this.email);
+
+        this.mensaje();
+      } catch (error) {
+        this.mensajeError();
+      }
     } else {
-      // Mostrar el mensaje de éxito si el campo tiene un valor
-      this.mostrarBien("Correo enviado.");
+      this.invalido();
     }
   }
 
-  async mostrarError(mensaje: string) {
-    await Swal.fire({
-      icon: 'error', // Tipo de ícono (puedes cambiarlo según tus necesidades)
-      text: mensaje,
-      confirmButtonText: 'Entendido', // Texto del botón de confirmación
-      heightAuto: false
-    });
-  }
-  async mostrarBien(mensaje: string) {
-    await Swal.fire({
-      icon: 'success', // Tipo de ícono (puedes cambiarlo según tus necesidades)
-      text: mensaje,
-      confirmButtonText: 'Entendido', // Texto del botón de confirmación
+  mensaje() {
+    Swal.fire({
+      icon: 'success',
+      title: 'Registrado',
+      text: 'Se ha enviado correo de recuperación correctamente a: ' + this.email,
       heightAuto: false
     });
   }
 
+
+  mensajeError() {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Error al enviar el correo de recuperación de contraseña',
+      heightAuto: false
+    });
+  }
+
+
+
+  invalido() {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Ingrese una dirección de correo electrónico válida.',
+      heightAuto: false
+    });
+  }
 }
