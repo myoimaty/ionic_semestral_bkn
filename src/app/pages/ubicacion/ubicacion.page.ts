@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import * as L from 'leaflet';
+import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 
 @Component({
   selector: 'app-ubicacion',
@@ -9,12 +9,40 @@ import * as L from 'leaflet';
 })
 export class UbicacionPage implements OnInit {
 
-  map!: L.Map;
+  latitud?: number;
+  longitud?: number;
+  duocLatitud = -33.597925302256705;
+  duocLongitud = -70.57919974602049;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private geolocation: Geolocation) { }
 
   ngOnInit() {
-    this.map = L.map('map', {
+
+  }
+
+  getLocation() {
+    this.geolocation.getCurrentPosition().then((resp) => {
+      this.latitud = resp.coords.latitude;
+      this.longitud = resp.coords.longitude;
+    }).catch((error) => {
+      console.log('Error al obtener locación', error);
+    });
+  }
+
+  scanQR() {
+    this.router.navigate(['lector'])
+  }
+
+}
+
+/* POR SI SE REQUIERE EL MAPA
+
+import * as L from 'leaflet';
+
+map!: L.Map;
+
+
+this.map = L.map('map', {
       center: [-33.59824701530573, -70.57847018523768],
       zoom: 15,
       renderer: L.canvas()
@@ -25,11 +53,5 @@ export class UbicacionPage implements OnInit {
     setTimeout(() => {
       this.map.invalidateSize();
     }, 0);
-    
-  }
 
-  scanQR() {
-    this.router.navigate(['lector'])
-  }
-
-}
+    */

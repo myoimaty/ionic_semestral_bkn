@@ -9,7 +9,14 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div id="map"></div>
+  <div>
+    <ion-button expand="block" (click)="getLocation()">Obtener localización</ion-button>
+    <p style="margin-left: 5%;"><strong>Latitud: </strong>{{latitud}}</p>
+    <p style="margin-left: 5%;"><strong>Longitud: </strong>{{longitud}}</p>
+    <p style="margin-top: 50%; margin-left: 5%;"><strong>Ubicación Duoc: </strong></p>
+    <p style="margin-left: 5%;"><strong>Latitud: </strong>{{duocLatitud}}</p>
+    <p style="margin-left: 5%;"><strong>Longitud: </strong>{{duocLongitud}}</p>
+  </div>
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
     <ion-fab-button>
       <ion-icon (click)="scanQR()" name="qr-code-outline"></ion-icon>
