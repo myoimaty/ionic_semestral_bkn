@@ -100,4 +100,8 @@ export class AuthfirebaseService {
     }
   }
 
+  getUserInfo() {
+    return this.auth.currentUser;
+  }
+
 }

@@ -28,7 +28,16 @@ export class DetailPage implements OnInit {
   }
 
   getQRCodeData(): string {
-    return `${this.clase.nombre}, ${this.clase.docente}`;
+    // Obtener la fecha actual
+    const currentDate = new Date();
+  
+    // Formatear la fecha como YYYY-MM-DD
+    const formattedDate = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1)
+      .toString()
+      .padStart(2, '0')}-${currentDate.getDate().toString().padStart(2, '0')}`;
+  
+    // Concatenar la información de la clase y la fecha
+    return `${this.clase.nombre}, ${this.clase.docente}, ${formattedDate}`;
   }
 
   ionViewWillEnter(){

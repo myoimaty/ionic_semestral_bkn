@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
 import { Iasist } from 'src/app/interfaces/iasist';
 import { Iclase } from 'src/app/interfaces/iclase';
 
@@ -33,4 +34,13 @@ export class FirestoreService {
   addAsistencia(asistencia: Iasist) {
     return this.firestore.collection<Iasist>('asistencias').add(asistencia);
   }
+
+  getAsistenciasPorEstudianteId(estudianteId: string): Observable<Iasist[]> {
+    return this.firestore
+      .collection<Iasist>('asistencias', (ref) =>
+        ref.where('estudianteId', '==', estudianteId)
+      )
+      .valueChanges();
+  }
 }
+

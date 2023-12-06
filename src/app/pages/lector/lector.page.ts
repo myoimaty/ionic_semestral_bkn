@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import {ElementRef, ViewChild } from '@angular/core';
+import { ElementRef, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import jsQR from 'jsqr';
 import { ToastController, LoadingController, Platform } from '@ionic/angular';
 import { FirestoreService } from 'src/app/services/firebase/firestore.service';
 import { AuthfirebaseService } from 'src/app/services/firebase/authfirebase.service';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Iasist } from 'src/app/interfaces/iasist';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-lector',
   templateUrl: './lector.page.html',
   styleUrls: ['./lector.page.scss'],
 })
-export class LectorPage{
+export class LectorPage {
 
   langs: string[] = [];
   idioma!: string;
@@ -37,6 +38,7 @@ export class LectorPage{
     private plt: Platform,
     private firestore: FirestoreService,
     private authService: AuthfirebaseService,
+    private router: Router
   ) {
     this.langs = this.transService.getLangs();
   }
@@ -102,14 +104,7 @@ export class LectorPage{
         this.scanActive = false;
         this.scanResult = code.data as string;
         this.showQrToast();
-        const asistencia: Iasist = {
-          nombre: 'matias', // Reemplaza con la información relevante
-          fecha: new Date().toISOString(), // Fecha actual
-          docente: 'panshoots', // Reemplaza con la información relevante
-          // Otros campos según sea necesario
-        };
-        this.firestore.addAsistencia(asistencia);
-        
+        this.saveAsistencia(code.data);
       } else {
         if (this.scanActive) {
           requestAnimationFrame(this.scan.bind(this));
@@ -120,6 +115,35 @@ export class LectorPage{
     }
   }
 
+  async saveAsistencia(qrData: string) {
+    const user = await this.authService.getUserInfo();
+    if (user) {
+      const qrInfo = qrData.split(',');
+      const estudianteNombre = qrInfo[0].trim();
+      const docenteNombre = qrInfo[1].trim();
+  
+      const asistencia: Iasist = {
+        nombre: estudianteNombre,
+        fecha: new Date().toISOString(),
+        docente: docenteNombre,
+        userId: user.uid,
+      };
+  
+      this.firestore.addAsistencia(asistencia);
+  
+      // Redirige a la página de asistencias después de guardar
+      this.router.navigate(['asistencias']);
+  
+      // Muestra un mensaje con Sweet Alert
+      Swal.fire({
+        icon: 'success',
+        title: 'Asistencia guardada exitosamente',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  }
+
   async showQrToast() {
     const toast = await this.toastCtrl.create({
       message: '¡Código QR escaneado exitosamente!',
@@ -127,14 +151,13 @@ export class LectorPage{
     });
     await toast.present();
   }
+
   stopScan() {
     this.scanActive = false;
     this.scanResult = null;
 
     if (this.videoElement) {
-      this.videoElement.style.display = 'none'; // O puedes usar 'visibility: hidden;'
+      this.videoElement.style.display = 'none';
     }
   }
-
-  
 }

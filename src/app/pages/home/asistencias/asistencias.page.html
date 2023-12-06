@@ -26,33 +26,12 @@
             <ion-label>{{"Fechas" | translate }}</ion-label>
           </ion-item>
           <div class="ion-padding" slot="content">
-            <ion-label color="success">01-09-23</ion-label>
+            <ion-list>
+              <ion-item *ngFor="let asistencia of asistencias">
+                <ion-label color="success">{{ formatDate(asistencia.fecha) }}</ion-label>
+              </ion-item>
+            </ion-list>
           </div>
-          <div class="ion-padding" slot="content">
-            <ion-label color="success">02-09-23</ion-label>
-          </div>
-          <div class="ion-padding" slot="content">
-            <ion-label color="danger">03-09-23</ion-label>
-          </div>
-          <div class="ion-padding" slot="content">
-            <ion-label color="success">04-09-23</ion-label>
-          </div>
-          <div class="ion-padding" slot="content">
-            <ion-label color="success">05-09-23</ion-label>
-          </div>
-          <div class="ion-padding" slot="content">
-            <ion-label color="success">06-09-23</ion-label>
-          </div>
-          <div class="ion-padding" slot="content">
-            <ion-label color="success">07-09-23</ion-label>
-          </div>
-          <div class="ion-padding" slot="content">
-            <ion-label color="success">08-09-23</ion-label>
-          </div>
-          <div class="ion-padding" slot="content">
-            <ion-label color="success">09-09-23</ion-label>
-          </div>
-
         </ion-accordion>
       </ion-accordion-group>
     </ion-card-content>

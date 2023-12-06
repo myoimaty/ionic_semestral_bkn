@@ -17,6 +17,7 @@ import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-transla
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
@@ -43,7 +44,11 @@ import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
       }
     })
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, Geolocation],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    Geolocation,
+    DatePipe,  // Aquí es donde proporcionas el DatePipe como proveedor
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
