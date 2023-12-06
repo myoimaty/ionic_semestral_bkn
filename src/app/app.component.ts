@@ -34,9 +34,12 @@ export class AppComponent {
     private menuCotroller: MenuController,
     private transService: TranslateService,
   ) {
-    this.langs = this.transService.getLangs();
     this.transService.setDefaultLang('es');
     this.transService.addLangs(['en', 'fr']);
+
+    const savedLang = localStorage.getItem('appLang') || 'es';
+      console.log('Saved Language:', savedLang);
+      this.transService.use(savedLang);  // Establecer el idioma desde localStorage
   }
 
   mostrarMenu() {
@@ -55,8 +58,11 @@ export class AppComponent {
   }
 
   changeLangs(event: any) {
-    this.transService.use(event.detail.value);
+    const selectedLang = event.detail.value;
+    this.transService.use(selectedLang);
+    localStorage.setItem('appLang', selectedLang);
   }
+  
 
 
 }

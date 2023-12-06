@@ -102,17 +102,14 @@ const routes: Routes = [
   {
     path: 'apidetail/:id',
     loadChildren: () => import('./pages/api/detail/detail.module').then( m => m.DetailPageModule)
-  },  {
+  },
+  {
     path: 'feriados',
     loadChildren: () => import('./pages/feriados/feriados.module').then( m => m.FeriadosPageModule)
   },
   {
     path: 'ubicacion',
     loadChildren: () => import('./pages/ubicacion/ubicacion.module').then( m => m.UbicacionPageModule)
-  },
-  {
-    path: 'scan-qr',
-    loadChildren: () => import('./pages/scan-qr/scan-qr.module').then( m => m.ScanQRPageModule)
   },
   {
     path: 'lector',

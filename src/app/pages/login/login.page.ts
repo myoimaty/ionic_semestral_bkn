@@ -109,7 +109,9 @@ export class LoginPage implements OnInit {
   }
 
   changeLangs(event: any) {
-    this.transService.use(event.detail.value);
+    const selectedLang = event.detail.value;
+    this.transService.use(selectedLang);
+    localStorage.setItem('appLang', selectedLang);
   }
 
   async nada() {

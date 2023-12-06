@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
-
+import { FirestoreService } from './firestore.service';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthfirebaseService {
 
-  constructor(private auth: AngularFireAuth, private router: Router) { }
+  constructor(private auth: AngularFireAuth, private router: Router, private firestore2: FirestoreService,private firestore: AngularFirestore) { }
 
   async login(email: string, pass: string) {
     try {
@@ -70,4 +71,5 @@ export class AuthfirebaseService {
       console.error('Error al enviar el correo de recuperación de contraseña:', error);
     }
   }
+
 }

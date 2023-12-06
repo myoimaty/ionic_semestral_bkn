@@ -3,6 +3,9 @@ import {ElementRef, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import jsQR from 'jsqr';
 import { ToastController, LoadingController, Platform } from '@ionic/angular';
+import { FirestoreService } from 'src/app/services/firebase/firestore.service';
+import { AuthfirebaseService } from 'src/app/services/firebase/authfirebase.service';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-lector',
@@ -30,7 +33,9 @@ export class LectorPage{
     private transService: TranslateService,
     private toastCtrl: ToastController,
     private loadingCtrl: LoadingController,
-    private plt: Platform
+    private plt: Platform,
+    private firestore: FirestoreService,
+    private authService: AuthfirebaseService,
   ) {
     this.langs = this.transService.getLangs();
   }
@@ -121,4 +126,6 @@ export class LectorPage{
       this.videoElement.style.display = 'none'; // O puedes usar 'visibility: hidden;'
     }
   }
+
+  
 }
