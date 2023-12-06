@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Iasist } from 'src/app/interfaces/iasist';
 import { Iclase } from 'src/app/interfaces/iclase';
 
 @Injectable({
@@ -27,5 +28,9 @@ export class FirestoreService {
 
   getClaseById(nombreColeccion: string, documetId: string) {
     return this.firestore.collection<Iclase>(nombreColeccion).doc(documetId).valueChanges();
+  }
+
+  addAsistencia(asistencia: Iasist) {
+    return this.firestore.collection<Iasist>('asistencias').add(asistencia);
   }
 }

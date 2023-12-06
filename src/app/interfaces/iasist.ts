@@ -1,4 +1,4 @@
-export interface Iclase {
+export interface Iasist {
     id?: String,
     nombre: String,
     fecha: String,

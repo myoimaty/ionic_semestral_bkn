@@ -72,4 +72,32 @@ export class AuthfirebaseService {
     }
   }
 
+  async getInformacionEstudiante() {
+    try {
+      // Obtener información del estudiante desde el servicio de autenticación de Firebase
+      const usuarioActual = await this.auth.currentUser;
+      return {
+        nombre: usuarioActual?.displayName || 'Nombre por defecto del estudiante',
+        // Otras propiedades según sea necesario
+      };
+    } catch (error) {
+      console.error('Error al obtener información del estudiante:', error);
+      return {}; // O manejar el error de alguna manera
+    }
+  }
+  
+  async getInformacionDocente() {
+    try {
+      // Obtener información del docente desde el servicio de autenticación de Firebase
+      const usuarioActual = await this.auth.currentUser;
+      return {
+        nombre: usuarioActual?.displayName || 'Nombre por defecto del docente',
+        // Otras propiedades según sea necesario
+      };
+    } catch (error) {
+      console.error('Error al obtener información del docente:', error);
+      return {}; // O manejar el error de alguna manera
+    }
+  }
+
 }

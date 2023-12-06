@@ -6,6 +6,7 @@ import { ToastController, LoadingController, Platform } from '@ionic/angular';
 import { FirestoreService } from 'src/app/services/firebase/firestore.service';
 import { AuthfirebaseService } from 'src/app/services/firebase/authfirebase.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Iasist } from 'src/app/interfaces/iasist';
 
 @Component({
   selector: 'app-lector',
@@ -101,6 +102,14 @@ export class LectorPage{
         this.scanActive = false;
         this.scanResult = code.data as string;
         this.showQrToast();
+        const asistencia: Iasist = {
+          nombre: 'matias', // Reemplaza con la información relevante
+          fecha: new Date().toISOString(), // Fecha actual
+          docente: 'panshoots', // Reemplaza con la información relevante
+          // Otros campos según sea necesario
+        };
+        this.firestore.addAsistencia(asistencia);
+        
       } else {
         if (this.scanActive) {
           requestAnimationFrame(this.scan.bind(this));
