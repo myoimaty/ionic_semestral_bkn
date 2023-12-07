@@ -140,6 +140,7 @@ export class LectorPage {
         title: 'Asistencia guardada exitosamente',
         showConfirmButton: false,
         timer: 1500,
+        heightAuto: false
       });
     }
   }
