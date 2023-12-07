@@ -122,9 +122,12 @@ export class LectorPage {
       const estudianteNombre = qrInfo[0].trim();
       const docenteNombre = qrInfo[1].trim();
   
+      // Obtén la fecha actual sin la hora
+      const fechaSinHora = new Date().toLocaleDateString();
+  
       const asistencia: Iasist = {
         nombre: estudianteNombre,
-        fecha: new Date().toISOString(),
+        fecha: fechaSinHora,
         docente: docenteNombre,
         userId: user.uid,
       };
@@ -144,6 +147,7 @@ export class LectorPage {
       });
     }
   }
+  
 
   async showQrToast() {
     const toast = await this.toastCtrl.create({
